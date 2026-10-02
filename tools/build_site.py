@@ -191,6 +191,8 @@ th{font:500 11.5px/1.4 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.0
   text-align:left;background:var(--paper2);border-bottom:1px solid var(--rule);padding:10px 12px;white-space:nowrap}
 td{padding:9px 12px;border-top:1px solid var(--rule);vertical-align:top;background:var(--paper);color:var(--ink)}
 td:first-child{white-space:nowrap;color:var(--ink-em)}
+.snap td:first-child{white-space:normal;width:7.5em;min-width:7.5em;font-size:12.5px;line-height:1.5}
+.snap td:nth-child(3){width:27%}
 tr:hover td{background:var(--panel)}
 mark{background:var(--mark);color:var(--ink-em);padding:0 3px;border-radius:2px}
 code{font:12.5px/1.5 "JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;background:var(--code);color:var(--ink-em);padding:1.5px 5px;border-radius:3px}
@@ -336,6 +338,8 @@ def build(lang):
     body = flagify(body)
     body = quoteclass(body)
     body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
+    # 快照表:日期列允许换行并收窄,把宽度让给快照/总览两列
+    body = re.sub(r'(<h4 id="[^"]*(?:快照|snapshots)[^"]*">.*?)<div class="tbl"><table>', r'\1<div class="tbl snap"><table>', body, count=1, flags=re.S)
     for a, b in SVG_THEME:
         body = body.replace(a, b)
     body = body.replace('<div style="overflow-x:auto;margin:1.1em 0;">', '<figure class="fig">').replace('</svg></div>', '</svg></figure>')
