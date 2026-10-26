@@ -14,8 +14,8 @@ from pathlib import Path
 import markdown
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA_AS_OF = '2026-10-21'          # 时效性数字刷新至(源稿刷新后改这里;须与 REPORT.md 头部一致)
-PAGE_MODIFIED = '2026-10-22'       # 页面修改日(结构化数据 dateModified / 站点地图 / 存档文件名);与数据时点分开 —— 同步新节不等于全文数字已刷新
+DATA_AS_OF = '2026-10-23'          # 时效性数字刷新至(源稿刷新后改这里;须与 REPORT.md 头部一致)
+PAGE_MODIFIED = '2026-10-26'       # 页面修改日(结构化数据 dateModified / 站点地图 / 存档文件名);与数据时点分开 —— 同步新节不等于全文数字已刷新
 BASE = 'https://ronfi.github.io/ai-bubble/'
 REPO = 'https://github.com/ronfi/ai-bubble'
 SITE = 'AI 泡沫研究 · AI Bubble'
