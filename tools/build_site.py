@@ -14,8 +14,8 @@ from pathlib import Path
 import markdown
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA_AS_OF = '2026-11-20'          # 时效性数字刷新至(源稿刷新后改这里;须与 REPORT.md 头部一致)
-PAGE_MODIFIED = '2026-11-20'       # 页面修改日(结构化数据 dateModified / 站点地图 / 存档文件名);与数据时点分开 —— 同步新节不等于全文数字已刷新
+DATA_AS_OF = '2026-11-25'          # 时效性数字刷新至(源稿刷新后改这里;须与 REPORT.md 头部一致)
+PAGE_MODIFIED = '2026-11-25'       # 页面修改日(结构化数据 dateModified / 站点地图 / 存档文件名);与数据时点分开 —— 同步新节不等于全文数字已刷新
 BASE = 'https://ronfi.github.io/ai-bubble/'
 REPO = 'https://github.com/ronfi/ai-bubble'
 SITE = 'AI 泡沫研究 · AI Bubble'
@@ -50,8 +50,8 @@ LANG = {
                  '在其他任何地方看到的地址,无论看起来多像,都不要使用。',
     donate_desc={'evm': 'ETH / L2s / BSC · ETH/USDC/USDT', 'tron': 'USDT-TRC20', 'sol': 'SOL / SPL',
                  'btc-segwit': 'Native SegWit(推荐)', 'btc-legacy': '兼容旧钱包'},
-    legend=[('✅', '对抗验证确证的事实'), ('🔶', '一手数据 + 本文自算,须连口径引用'), ('❔', '公认史实,本轮未再验证'),
-            ('⚠', '单一来源或口径受限,只用于画窗口'), ('🔴', '最吃重、最易被误读之处'), ('❌', '经核查证伪')],
+    legend=[('✅', '一手文件或对抗验证确证的事实'), ('🔶', '媒体或二手口径,未读原文'), ('❔', '公认史实,本轮未再验证'),
+            ('⚠', '机构估计或本文判断'), ('🔴', '最吃重、最易被误读之处'), ('❌', '经核查证伪')],
     stale='⚠ 英文版落后于中文版,以中文版为准。',
  ),
  'en': dict(
@@ -83,8 +83,8 @@ LANG = {
                  'do not use any address you see anywhere else, however similar it looks.',
     donate_desc={'evm': 'ETH / L2s / BSC · ETH/USDC/USDT', 'tron': 'USDT-TRC20', 'sol': 'SOL / SPL',
                  'btc-segwit': 'Native SegWit (recommended)', 'btc-legacy': 'legacy wallets'},
-    legend=[('✅', 'confirmed by adversarial verification'), ('🔶', 'primary data + own calculation; cite the method with it'), ('❔', 'accepted history, not re-verified this round'),
-            ('⚠', 'single source or limited caliber; sizes a window, never settles one'), ('🔴', 'load-bearing, and easiest to misread'), ('❌', 'falsified on checking')],
+    legend=[('✅', 'primary filing, or confirmed by adversarial verification'), ('🔶', 'media or secondary account; original not read'), ('❔', 'accepted history, not re-verified this round'),
+            ('⚠', 'institutional estimate or this paper\'s judgment'), ('🔴', 'load-bearing, and easiest to misread'), ('❌', 'falsified on checking')],
     stale='⚠ The English edition lags the Chinese one; the Chinese edition governs.',
  ),
 }

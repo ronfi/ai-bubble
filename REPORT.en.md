@@ -1,424 +1,296 @@
 # The AI Bubble Against the Dot-com Bubble
 
-> **First edition**: 2026-07-02 ｜ **Overall data through**: the 2026-11-20 close (A-shares and Hong Kong; the US market had not yet opened on 11-20 and remains at the 11-19 close; interim refresh after the 11-20 close; A-share and Hong Kong prices for the day are from Tencent quotes, with valuations and percentiles rolled forward from the 11-19 cross-section by the day's price change, to be re-checked; additions in this refresh: a broad A-share sell-off on 11-20 — median stock −5.08%, 94% of stocks down (99th percentile of five years), while the CSI 300 fell only 0.76%; #9 style gap +15.0→+20.4pp; compute-chain basket at −59.1%, level with the 11-17 low; Zhipu closed at 334.0 and MiniMax at 102.4 (lowest close since listing); CoreWeave solvency breakdown (§2.2/#2). What follows is the note from the 11-20 morning edition: data at the 11-19 close, all three markets in sync; US valuations are the 11-18 cross-section; external readings through 11-20 03:00 UTC, FRED spreads and rates through 11-18; additions: Anthropic priced at $83 (above the range) and closed its 11-19 first day of trading at $97.17 (+17.1%), 424B4 original text (§2.4/#3/#4); Nvidia's 11-17 quarterly results and CFO commentary, original text (#4/#5); CoreWeave's Q3 report, original text (§2.2/#2); HY spread back up to 347bp (#2); Nasdaq 100 closed at 26,517, below the 11-05 low (#7); the A-share compute-chain basket made a cycle low of −59.1% on 11-17 (#9); readings for the 11-09 and 11-16 editions are also added; §2.5/§2.6 remain 10-15 topical snapshots and §2.7 a 10-22 close supplement).
-> **Method**: a deep-retrieval workflow (106 agents / 24 sources / 115 candidate claims → 25 adversarially verified → **22 confirmed, 3 rejected**) + first-hand data across three markets (A-shares / Hong Kong / US, each on its own five-year valuation percentile) + the academic framework (Pastor–Veronesi rational bubbles, Greenwood–Shleifer–You).
-> **Date conventions**: the 2000 history (§1) is fixed fact; institutional figures (IMF / Goldman / GMO etc.) keep their own report dates; **this page's first-hand readings (§2.1 / §2.2 / §2.4 / §4.4) are refreshed wholesale to the data date each edition; old values are not kept**. Earlier editions are in the archive at the foot of the page.
+> **This edition**: 2026-11-25 (rewritten in full; no running log of past updates) | **First version**: 2026-07-02
 >
-> **Evidence grades**: ✅ = fact confirmed by adversarial verification ｜ ⚠ = institutional model estimate or opinion (source checkable, not hard fact) ｜ ❔ = accepted history not put through this round's three-vote check ｜ ❌ = rejected by adversarial verification (do not cite).
+> **Data as of**: A-shares and Hong Kong, close of 2026-11-25 (closing quotes from a market-data feed, valuations scaled by the day's price change; **an estimate**, to be checked against final data); US, close of 2026-11-24 (valuation snapshot of 11-23); spreads and yields from FRED, through 11-23.
 >
-> **One-line conclusion**: the AI trade is most likely a **"real technological revolution plus a localised, layered bubble"**, not a 2000-style wholesale speculative mania. The **timing of any break is academically unforecastable**; the right posture is not to guess a date but to **diagnose bubble intensity by layer (the three-market data happen to give three temperatures) and monitor trigger conditions**. The most transferable lesson of 2000: **the break was about 31 months of staged declines, not a one-day crash, and the bottom came about 2.5 years after the top — any response has to be scaled to the whole clearing period, not to the first leg down.**
+> **Earlier editions**: from 2026-11-25 this page is a clean rewrite and no longer accumulates period-by-period readings in the text; every earlier edition is in the archive linked at the bottom of the page.
+>
+> **Evidence marks**: ✅ primary filing, or a fact confirmed by adversarial verification | ⚠ institutional estimate or this paper's judgment | 🔶 media or secondary account, original not read | ❔ accepted history, not separately verified.
+>
+> **About the public edition**: this page is cut from the research source (source `4ac3c15`, 2026-11-25). It contains no action plan, positions or stock picks; it keeps the historical comparison, the current check-up, the scenario framework and the leading-indicator dashboard. **Not investment advice.**
+>
+> **Disclosure**: this paper was written by a model made by Anthropic. Anthropic is one of the main subjects of the study, and its competitors (OpenAI, Zhipu, MiniMax and others) also appear. Negative information about any of them is neither softened nor slanted.
 
-> **About this public edition**: this page is mechanically cropped from a research source (source `81a15a8`, 2026-11-20). It contains no trading recommendations or stock picks and retains historical comparison, current conditions, scenarios and the indicator dashboard. Numbers and evidence grades are retained. **Not investment advice.**
+## 0. Conclusions
 
----
+**The clearing is already under way, and it runs from the outside in.** The question is no longer whether it breaks. From their respective highs: Korea's KOSPI −48.5%, the A-share compute-chain basket −57%, the Philadelphia Semiconductor Index −40%, neoclouds about −70%, the two Hong Kong-listed foundation-model companies about −90%, the Nasdaq-100 −16% (−19.8% at its low on 11-20), the S&P 500 −8%. The size of the fall tracks leverage, cyclicality and distance from end demand.
 
-## 1. Anatomy of the 2000 dot-com bubble (verified data)
+**But neither test for a system-wide break has been met.** This study defines the system-level signals as consecutive earnings misses at the leaders (#5) or a collective cut to capital-spending guidance by the hyperscalers (#1). Nvidia's latest quarter still showed revenue up 103% on the year, and no hyperscaler has cut. So far what has fallen is valuation, credit and issuance, not earnings.
 
-### 1.1 Crash timeline and shape ✅
+**Three things changed the picture in the past four weeks:**
 
-| Phase | Date | NASDAQ level | Note |
-|------|------|------------|------|
-| **Top** | 2000-03-10 | **5,048.62** (closing peak) | The 10 weeks before the top were exactly when IPO returns were most tempting (see 1.3) |
-| First sharp drop | 2000-04 | about **−25%** in a week | Around the Microsoft antitrust ruling (4/3) ❔ |
-| Full-year 2000 | — | 4,069 → 2,471, **−39.3%** | With a pronounced rally in summer 2000 in between |
-| Full-year 2001 | — | → 1,950, **−21.1%** | Another large rally from after 9/11 into early 2002 |
-| Full-year 2002 | — | → 1,336, **−31.5%** | WorldCom / Enron accounting scandals ❔ |
-| **Trough** | 2002-10-09 | **1,114.11** | Cumulative **−77.9%**, about **31 months** |
+1. **Issuance delivered, then broke issue.** Anthropic priced at $83 on 11-18 and raised $81.3 billion, the largest IPO on record (🔶). It closed at $97.17 on day one and at **$81.91, below the offer price**, on its fourth trading day (11-24).
+2. **A leader was hit by something other than earnings.** Nvidia's chief executive resigned on 11-12 (✅ 8-K), and 🔶 media report that the SEC is investigating its accounting. The stock is 35% below its high and was 47.5% below it on 11-20.
+3. **Credit spreads set a new high for this cycle.** The US high-yield spread rose from 266bp in September to 376bp on 11-20.
 
-Source: Wikipedia (Stock market downturn of 2002 / Nasdaq Composite); annual declines re-computed from independent year-end closes and consistent.
+**In time, this is still early.** The 2000 bust lasted about 31 months, with several rallies of 20–40% along the way. In this cycle the periphery peaked about five months ago and the Nasdaq-100 seven weeks ago.
 
-**Core conclusion on shape ✅**: the break was a **staged grind lower** (three annual declines of −39% / −21% / −32%, with several 20–40% rallies in between), not a single crash. **There was no "bottom day" — the bottom came about 2.5 years after the top.** Money that went in after the first sharp drop most likely still had one to two years of pain ahead.
-
-### 1.2 Valuation at the top ✅
-
-- NASDAQ-100 **trailing PE ≈ 250** at the top (⚠ trailing basis; forward about 60× — any comparison with today must use the same basis, or the gap is exaggerated). Source: Nasdaq official documents.
-- S&P **CAPE peak 44.2** (1999-12, Shiller monthly basis), an all-time record; the mean since 1880 is 17.6.
-- ❔ Accepted background (not separately verified this round): the S&P 500 fell about −49% peak to trough over the same period — the bubble **was not confined to the Nasdaq** (the claim that it was lost **0–3** ❌).
-
-### 1.3 IPO mania: the quantifiable signature of a top ✅
-
-| Metric | 1998 | 1999 | Multiple |
-|------|------|------|------|
-| Internet IPOs | 42 | **289** | ~7× |
-| Proceeds | $1.96bn | **$24.66bn** | ~12.6× |
-| Share of all IPOs | 14% (classification-dependent; Ritter's broad basis ~22%) | **60%** | — |
-| Average first-day gain | — | **+90%** (29 of the 30 largest first-day gains in history were in 1999; VA Linux +698%) | — |
-| Year-end vs. offer price | — | average **+266%** (non-internet only +59%), 16 names up more than 1,000% | — |
-
-Source: WilmerHale's contemporaneous 1999-12-31 report, cross-checked against Jay Ritter's IPO database.
-
-**Implication ✅**: when these numbers appeared, the top was only **10 weeks** away — gains and mania themselves give no timing (the stretch before a top is exactly the most profitable), but they are after-the-fact checkable "accompanying features of a top" and serve as a benchmark for today's AI issuance heat.
-
-### 1.4 The world after the break ❔ (accepted history from retrieved secondary sources, not three-vote verified)
-
-- **Cisco**: about −89% from peak; **its first closing high above the 2000 level came on 2025-12-10** (CNBC) — about **25.7 years**.
-- **Nasdaq round trip**: about **15 years** to regain 5,048 (2015-04).
-- **Amazon**: $107 → $5.97 (2001-10), about **−94%**; then one of the biggest winners of the following decade and more.
-- **Microsoft / Intel**: drawdowns of −60% to −80%, recoveries of 10+ years.
-- **Infrastructure glut**: debt-financed telecom fibre ran at low utilisation for years (commonly cited <5%); the telecom casualty list was longer than the internet one (Telecoms crash).
-- **Value / defensives**: value beat growth by a wide margin in 2000–2002 (Fama-French HML strongly positive) — a bubble's unwinding is a harvest season for value investing.
-- **Buffett**: mocked for refusing tech in 1999; in 2002–2003 turned to buying mispriced credit, including Amazon junk bonds (Bloomberg 2003-04: *Buffett Lauds Amazon's Courage, Then Buys Its Junk*) — **the best move after a break is not necessarily buying equity; it can be buying mispriced high-yield debt**.
-
-### 1.5 Recovery base rates: heavily right-skewed ✅
-
-Statistics on the maximum drawdowns of 6,500+ US stocks, 1985–2024 (Morgan Stanley, Mauboussin & Callahan 2025):
-
-- The **average** recovery reaches about **340%** of the prior peak; the **median** recovery reaches only about **90%** — **the median stock never regains its prior high**.
-- Among stocks that do regain the high, the median trough-to-high time is **2.5 years**.
-- ⚠ Note: the statistic covers all US drawdowns 1985–2024 (not 2000–2002 specifically); two claims from the same paper, "median drawdown 85%" and "54% never recover", **failed adversarial verification** (1–2 votes) ❌ — do not cite those numbers.
-
-**Implication**: the outsized returns after a break are concentrated in **a very small number of high-quality survivors** (the Amazon type). **"Buy whatever fell the most" is mathematically doomed to mediocrity or permanent loss; "select survivors with real cash flow" is the only way to be on the right side of a right-skewed distribution.**
+**Where this study was right and where it needs revising** is in §4.5.
 
 ---
 
-## 2. Check-up of the AI market today (mid-2026)
+## 1. Anatomy of the 2000 dot-com bubble
 
-### 2.1 Aggregate valuation and concentration
+### 1.1 Timeline and shape of the bust ✅
 
-| Indicator | Current reading | 2000 comparison | Grade |
-|------|---------|----------|------|
-| S&P CAPE | **≈40–41.6** (2026-07, second highest ever; mean 17.6) | peak 44.2 | ✅ |
-| Leader PE | NVDA trailing **18.9x / 0th percentile on its own five-year history, PB 6th (11-20 report basis, valuation from the Sharadar 11-18 cross-section; 11-19 price 145.98, −10.4% vs 11-13, −39.0% from highest close)**; 🔴 **results after the 11-17 close beat expectations, and the shares fell a further 6.1% over 11-18 and 11-19** (see §4.4 #5); AMD 114.1x / 54th / PB ⚠86, 489.19 (−8.4% vs 11-13, −7.7% on 11-19 alone, −24.7% from high); **four platform names at the 0–6th percentile**: GOOGL 14.8x / 1 (−32.2% from high), ORCL 18.4x / 1 (−55.1% from high), AMZN 21.5x / 6 / PB 1 (revenue growth 14.9%), NVDA 0; **high on PB**: MU PB ⚠83, MRVL ⚠84, AMD ⚠86, ANET ⚠81 (TSM down to 75); Microsoft −10.3% from high; **NDX closed 11-19 at 26,517.05 (−2.2% on the day), −15.1% from its 10-06 high, below the 11-05 close of 26,629.81 and a cycle low** | NDX trailing ~250x | ✅ (2000: trailing whole-index figure) |
-| Concentration | **30 AI stocks = 44% of S&P market cap** (JPM 2025-09; updated 2025-10 to 41 stocks = 47%); US **HHI at the 97.7th historical percentile** | markedly lower in 2000 | ✅/⚠ |
-| Household transmission | US household equity exposure about **30%** of total assets, much of it via index funds / 401k | lower | ✅ |
-| Implied earnings assumption | IMF: for PE to revert to its 10-year median by 2027, S&P / Nasdaq EPS need **~30% / ~35% CAGR** (far above analyst expectations) | — | ⚠ IMF estimate |
-
-**Reading**: aggregate valuation is at "second most expensive ever, behind only 2000", but **still some distance from the 2000 peak** (the IMF also judges the deviation smaller than historical peaks ⚠); meanwhile **concentration and household transmission exceed 2000** — if it breaks, the path is not "a Nasdaq pocket" but "index-level plus household-wealth-level".
-
-### 2.2 Capex, debt and circular deals (the part that most resembles 2000 telecoms)
-
-- ✅ **Capex scale**: Goldman's 2026 supply-side model — AI-related annual capex about **$765bn** in 2026, base case **~$1.6tn/yr** by 2031; **highly sensitive to chip-life / utilisation assumptions** (shorter life or lower utilisation → disappointing return on invested capital). IMF: cumulative **~$3.4tn** by 2029 (⚠ adopted analyst forecasts), about 70% borne by hyperscalers.
-- ✅ **Debt-financed and starting to stratify (07-20 → 08-31 milestones; all figures first-hand or verified secondary at the time)**: 2026 investment-grade issuance by the big six (Amazon/Alphabet/Nvidia/Meta/Oracle/SpaceX) cumulatively **~$182bn (+1,300% YoY)**, all into data centres and AI infrastructure. Sequence of credit stratification: **07-20** Oracle 5y CDS 75bp (7-year high) → **07-27** ~203bp → **07-28** S&P cuts Oracle to **BBB-** (last IG notch), FY26 capex $55.7bn → **07-29** Oracle FY26 free cash flow **−$23.7bn**, total debt ~$130bn; Moody's names Oracle + CoreWeave "the weakest AI credit links" → **08-03** CoreWeave 5y CDS ~855bp (model-implied 5-year default ~50%, ⚠ single source), Q1 interest expense doubled to $536m, FCF −$4.71bn; Moody's: the six's direct debt **~$460bn** + lease commitments **$1.2tn** → **08-06** lenders start demanding covenants; AI-related CDS volume 2026Q2 +~600% YoY → **08-10** CoreWeave's $2.6bn loan only subscribed at **+100–125bp with a 1.35x DSCR maintenance covenant** → **08-12** CoreWeave Q2 beats (backlog $104bn) but debt has rolled to $35bn; criterion set as "watch CDS and loan spreads for convergence, not the share price" → **08-17** total debt $35.6bn (✅) → **08-31** new $2.6bn DDTL priced at **SOFR+550bp, 100bp wider than May's +450** (✅ SEC 8-K first-hand: same borrower repriced within three months). ⚠ Reading discipline: wider CDS "marks rising risk, not imminent default"; 30Y Treasuries widened ~40bp over the same period, so the net "collateral confidence" signal must be read after stripping the rate beta. **This is the closest contemporary analogue to "telecoms borrowing to lay fibre in 2000", and has moved from volume to "volume + stratification + individual distress + tighter terms + repricing".**
-- **09-14 update (weekly): a [contrary backdrop] appeared this period, and it makes the AI-side anomaly more conspicuous, not less** — ✅ **broad credit extremely compressed**: ICE BofA US high-yield OAS **270bp (09-10)**, in the **richest decile** of history (long-run median ~450bp). 🔴 **⚠ But this cannot fill #2's box**: #2 watches **AI-related credit** (CoreWeave/Oracle CDS and loan spreads), where the last reading was CoreWeave's new loan at **SOFR+550 (100bp wider than May, ✅ SEC 8-K)**. 📌 **⇒ In a market where nobody demands a risk premium, a 100bp mark-up for AI borrowers alone carries [more] information than it would during a general widening, not less.** ⚠ EDGAR was not checked this period ⇒ whether CoreWeave filed a new 8-K or Anthropic's S-1 appeared: **no new reading, no inference**. 🔴 **But the equity side weakened clearly** (✅ this page's first-hand data): **CRWV loss-making, ROE −43.6%, 1-month −17.4%, PB 15th pct**; **Nebius PE 1462.6x / ⚠99th pct**. ⇒ **The "equity–credit divergence" since August converged this period by [equity moving toward credit], not the other way round** — historically (2000 telecoms / 2008) exactly this direction.
-- **09-21 update (weekly): #2 gets its third first-hand data point, and the instrument changed** — CoreWeave **09-17 8-K** (Items 7.01/8.01, ✅ SEC): a proposed **$3bn convertible (2033) + $0.5bn option**, senior unsecured, with capped call; **coupon and conversion price undisclosed** ("privately negotiated"). 🔴 **Reading: choosing a convertible at 675bp CDS (media-implied 5-year default 42%, ⚠ secondary) means straight debt is too expensive, so future equity is swapped for today's cash** ⇒ third stage of credit tightening: **May SOFR+450 (pricing) → Aug +550 (repricing) → Sep convertible (instrument change)**. Equity the same week **CRWV −8.6% (88.99→81.36), PB pct 15→5** ⇒ the divergence keeps converging by "equity toward credit". 2026 capex need **$31–35bn vs TTM revenue $6.2bn**. ⚠ **No new first-hand CDS reading**; 42% recorded as direction only.
-- **09-28 update (weekly): #2's fourth first-hand point — after the instrument change, the demand side's answer is "yes, and more"**: CoreWeave **09-22 8-K** (Item 1.01, ✅ SEC): convertible **completed and upsized** — **$4.2bn 2.875% convertible 2033** (announced 09-17 at $3bn + $0.5bn option → base upsized to $3.7bn, option fully exercised), senior unsecured, **conversion premium 22.5%** (vs 09-17 close $79.88, conversion price ≈$97.85), capped call cap **$199.70 (150% premium)**, net proceeds **$4.137bn**, use "general corporate purposes". 🔴 **The same 8-K incidentally priced the straight debt: outstanding senior notes carry 8.5% / 9.0% / 9.25% / 9.625% / 9.75%** — **the 6–7pp between the 2.875% convertible and the 8.5–9.75% notes is the market's price for "future equity"**. ⚖ Reading: ① last period's "straight debt too expensive, so future equity for today's cash" is confirmed by first-hand coupons; ② but the equity-linked window is not only open, it was oversubscribed by 40% — **credit is tight on "debt", not shut on "CoreWeave the company"**; ③ equity the same week **+7.7% (81.36→87.59), PB pct 5→15**, opposite to the prior week's −8.6% — **down in the announcement week, up in the completion week: the market prices "can it get the money" above "with what"**. ⚠ No new first-hand CDS; the earlier 675bp remains direction only. 📌 2000 comparison gap: the shape of the telecom convertible window in 1999–2000 was not evidenced for this report; registered, not cited.
-- **10-02 update (interim refresh): nothing new first-hand for #2** — no new CoreWeave 8-K/424B5 on EDGAR since the 09-22 convertible 8-K (checked to 10-02); equity CRWV 88.57 (week +1.1%, PB 16th pct). 🔴 **Broad backdrop changed sharply**: ICE BofA US HY OAS **266bp (09-21 low) → 280 (09-24) → 312bp (09-30)**, +46bp in nine days, +32bp in four sessions; IG OAS 77→84bp. ⚠ Same discipline as 09-14: **broad spreads do not fill #2's box** (#2 watches AI borrowers), but they change the 09-14 premise that "nobody demands a risk premium" — **now everyone is beginning to demand one, and the AI borrowers' mark-up (SOFR+550 / 2.875% convertible vs 8.5–9.75% notes) is no longer an outlier but a leading value**. #2's grade stays until the next 8-K / first-hand CDS reading.
-- **10-05 update (weekly): still nothing new first-hand from AI borrowers for #2** (no CoreWeave 8-K since 09-23, checked to 10-04); equity CRWV 89.62 (1-month +10.7%, PB 19th pct); **broad HY OAS keeps widening: 266 (09-21) → 312 (09-30) → 324bp (10-01), +58bp in nine sessions; IG 77→86bp**. ⚠ Same discipline as 10-02: broad spreads do not fill #2's box; but the widening has now lasted two weeks, so the 09-14 premise that "nobody demands a risk premium" is formally void — the next AI-borrower pricing (8-K / CDS), landing in a widening market, is the criterion for upgrading #2.
-- **10-12 update (weekly): still nothing new first-hand for #2** (no CoreWeave 8-K in October, checked to 10-11); equity CRWV 82.08 (1-month −7.9%, PB percentile 19→**6**, back to the level of the 09-21 convertible-announcement week); broad HY OAS 324 (10-01) → **303** (10-06) → **315bp** (10-08), IG 82 — the widening has paused but not returned to the 266 starting point. ⚠ Broad spreads do not fill #2.
-- **10-19 update (weekly): #2 — the equity/credit divergence is over; stocks and bonds now fall together** — 🔶 CoreWeave's two unsecured issues due 2031/2032 fell below **80 cents** on 10-14 (distressed territory); the 2032 notes (issued near par four months ago) traded at about **78 cents, yielding >15%**; CDS-implied five-year default probability back at a record **>50%** (Jin10 / Sina and others citing Trace and Bloomberg, ⚠ second-hand); the shares fell 15.5% the same day and closed at 61.39 on 10-16, **PB percentile 0**. ✅ EDGAR: no 8-K / 424B5 in October, only two small executive Form 4 sales (10-12/10-13, about 44k shares, about $3.5m in total — not a credit signal). A CEO internal memo says backlog was **$104.2bn** at end-Q2 with >$25bn added in Q3, enough to cover the secured and parent-company unsecured debt. ⚠ Broad market: HY OAS **311 (10-09) → 325 (10-14) → 323bp (10-15)**, IG 83→84bp (✅ FRED) — the broad market widened only slightly, **the spread gap between AI borrowers and the broad market is the widest of this cycle**.
-- **10-22 update (full refresh): #2 stays under pressure, broad spreads keep widening** — 🔶 CoreWeave bond yields steadied around 15% (Benzinga headline, 10-21); CNBC 10-21, "CoreWeave's market confidence erodes as bond yields spike and stock sinks"; WSJ / Reuters / CNN on 10-19~20 all used CoreWeave as the example of "AI credit stress" (⚠ headlines only); equity CRWV 61.82 (10-21, 1-month −28.7%, PB percentile 1). ✅ EDGAR: no new 8-K since 10-15. ✅ Broad HY OAS **311 (10-09) → 325 (10-14) → 333bp (10-20)**, IG 83→87bp (FRED) — broad spreads +22bp in two weeks; the widening is spreading from AI borrowers to the broad market.
-- **10-26 update (weekly): #2 — broad spreads widen to a new high for this cycle; AI borrowers' stocks and bonds fall together for a second week** — ✅ HY OAS **311 (10-09) → 325 → 333 → 340bp (10-22)**, IG 89bp (FRED); 🔶 CoreWeave bond yields near 16% (headline level), CRWV 54.24 (10-23, 1-month −39.8%, −61.2% from high, PB percentile 0), Bernstein says no bottom yet (headline); 🔶 Morningstar 10-22 headline: a Korean neocloud IPO breaking issue price weighed on CoreWeave bonds (headline only, body not read); Bloomberg 10-23 headline "Blackstone's bet on a chip-fuelled debt boom is upending credit markets" (the same line as Blackstone's $9bn chip-lease debt). ✅ EDGAR: two Form 4s on 10-22, no 8-K.
-- **10-26 addendum (relayed by a 10-25 market commentary, each item checked here): #2 gets its first reading of "investment grade borrowing AI money at junk prices"** — ✅ Musk said on X at 19:11 UTC on 10-25 that "over the past few weeks the bond market has almost completely shut the door on companies without substantial revenue outside AI data centres; SpaceX completed $40bn of debt financing for GPUs, but we are investment grade, with Starlink and launch revenue", and predicted that "200-plus emerging compute clouds will die off in batches and be consolidated". Price comparison (✅ FRED ICE BofA effective yields, 10-22): investment-grade average **5.79%**, BBB **6.01%**, high-yield average **8.14%**; the weighted coupon on SpaceX's June notes **5.855%** (✅ 10-22 Q3 report text); for the new debt 🔶 Semafor (10-22) expects about **7.75%** on the chip-collateralised tranche and about **8.3%** on the lowest tranche (Benzinga 10-23 headline "priced above 8%"; the Q3 report discloses no subsequent events, no final pricing has been announced, and "completed" appears only in Musk's own post). **Readings**: ① CoreWeave's 15% describes the price of junk; SpaceX's 7.75–8.3% describes **the price of AI collateral itself** — the same investment-grade company pays 2–2.5 points more to borrow for AI than it did on ordinary debt four months ago, right up against the high-yield average; ② "companies with no revenue outside AI cannot borrow" is the credit version of §2.5's "outside in" sequence — the outer ring without revenue is cleared first and money concentrates in large players with cash flow; ③ ⚠ interested-party statement: SpaceX's Q3 report shows its SI segment at $7.56bn of quarterly revenue and 1.7 GW of compute (✅); xAI competes with the compute clouds for GPUs, power and capital, so "200 will die" works in its favour — the prediction is recorded as an interested party's view and not used as a trigger reading; ④ the money has not stopped: SpaceX did borrow, and OpenAI is still negotiating $30bn at a $1.25 trillion valuation (🔶) — #2 takes the form of "tiered pricing", not "a closed door".
-- **11-20 update (interim full refresh): spreads gave back all of last week's easing; CoreWeave's +24.7% gain on the day after results was fully given back over the following six trading days; the supplier subscription to a customer's IPO has closed** — ✅ HY OAS 320 (11-12) → 323 → 334 → 343 → **347bp (11-18)**, IG 89 → **93** (FRED; the 11-19 reading was not yet available), only 1bp short of the cycle high of 348 on 11-05; the previous edition's "easing from the high, to be confirmed over two weeks" was not confirmed. ✅ **CoreWeave Q3 report (11-10 press release and 11-12 10-Q, missed in the previous edition; original text read)**: revenue $3.661bn (+168%), operating profit $207m, **net interest expense $846m (4 times operating profit)**, net loss $709m; total debt principal **$47.5bn** ($35.6bn at end-Q2), of which $11.0bn matures in 2027; current liabilities $24.4bn against current assets $10.8bn; first-nine-month operating cash flow $5.64bn, purchases of fixed assets $23.56bn; backlog about $132.5bn; the two largest customers accounted for 30% and 24% of Q3 revenue; in compliance with all loan covenants as of 09-30. Guidance: 2026 revenue $13.0–13.3bn (raised), capex $37–39bn (lower bound raised from $35bn), Q4 interest expense $1.05–1.15bn; the company says it expects to receive about $9bn of customer prepayments and deposits over the next three months; an ATM programme of up to 35 million shares was set up on 09-17, with none sold as of 09-30. ✅ Share price: CRWV closed 11-19 at **44.91** (−15.5% vs 11-13; closed at 60.77 on 11-11, the day after results, then −26.1% over six trading days, already below the pre-results 48.73 and less than 3% from the cycle-low close of 43.66 on 11-05; −67.5% from high, PB percentile 3). Revenue and orders are accelerating, debt rose by about $11.9bn in one quarter, interest is already 4 times operating profit, and the shares are weakening in the same direction as broad spreads — still "stocks and bonds falling together". ✅ **Anthropic 424B4 (11-19, EDGAR 0001628280-26-074944, read in full)**: the concurrent $26bn private placement closed at the $83 offering price, with seven suppliers subscribing for 313,253,007 Class N shares in total; net proceeds of the offering plus the private placement about $104.8bn. ✅ **Nvidia CFO commentary (11-17, original text read)**: maximum guarantee exposure $118bn in total ($105bn for the Ohio campus leased to OpenAI), conditional commitments to compute clouds $32bn, total future commitments $518bn, accounts-receivable turnover 64 days (60 days last quarter); see §4.4 #4. AMD fell 7.7% on 11-19, triggered by a short-seller's critical report (🔶 media; the report reportedly concerns its customer-financing commitments; the report itself has not been read for this note). (Disclosure: the source was written using an Anthropic model; negative information has not been softened.)
-- **11-20 addition: will CoreWeave go bankrupt? A solvency breakdown (✅ all figures from its Q3 10-Q and press release; ⚠ the conclusions are this document's judgment)**. **Not likely in the near term**: ① operating income of $207M is after $1.9bn of depreciation; adjusted EBITDA, which adds it back, is $2.256bn, 2.7 times net interest expense of $846M — on a cash basis the interest can be paid; ② 98% of revenue comes from take-or-pay committed contracts, and backlog of about $132.5bn is roughly 10 times the 2026 revenue guidance; ③ liquidity totals $9.84bn (cash $4.12bn + $5.65bn of committed, undrawn loan capacity), the 10-Q contains no going-concern language, the company states that funding is sufficient for the next 12 months, and it was in compliance with all loan covenants as of 09-30; ④ the main loans are secured by GPUs and customer contracts and amortize monthly. **But it is fragile**: ① operating cash flow for the first nine months was $5.64bn against $23.56bn of property and equipment purchases, and the 2026 capex guidance of $37–39bn is about three times full-year revenue, so expansion depends entirely on external financing; ② principal due is $2.43bn in Q4 2026 and $10.97bn in 2027, together more than existing liquidity, so refinancing is required; ③ unsecured notes carry coupons of 8.5%–9.75%, and 🔶 in October its bonds at one point traded below 80 cents with yields above 15% (§2.2, 10-19 item); ④ cash profit covers interest only if GPU replacement is left out, and the rental value of older chips once contracts expire determines the value of the collateral; ⑤ the two largest customers were 30% and 24% of Q3 revenue, and major customers include Microsoft and OpenAI, the latter itself dependent on financing; ⑥ it has also committed up to $1.9bn of funding to variable interest entities for data-center development, of which $859M has been funded. **Judgment**: it is closer to a highly leveraged project-finance company — it borrows against customer contracts to buy chips and repays the debt from rental income. It keeps turning only if three conditions hold together: credit markets stay open, large customers pay as contracted, and chip rental values do not fall faster than depreciation. The risk is not "unable to pay the next interest instalment" but the chain reaction once any one condition fails: cannot borrow → cannot finish building → cannot deliver → backlog cannot be recognized as revenue. **Observable checkpoints for #2 "refinancing failure"**: (a) how the $11bn due in 2027 is rolled and at what price (8-K); (b) whether the roughly $9bn of customer prepayments and deposits the company expects over the next three months arrive (deferred revenue in the Q4 report); (c) whether the 35-million-share ATM set up on 09-17 starts to be used (none sold as of 09-30); (d) whether Q4 interest lands within the guided $1.05–1.15bn; (e) whether covenant waivers or amendments appear. **Not verified**: the draw conditions and covenant details of each loan were not checked one by one, so whether the undrawn capacity can be drawn in full is uncertain; there are no new first-hand readings of its bond prices or CDS in this round.
-- **11-16 update (weekly): spreads eased, but vendor financing gained a new example** — ✅ HY OAS 348 (11-05) → 342 → 334 → 330 → **320bp (11-12)**, IG 93 → 89 (FRED), 28bp below the high. ✅ **Anthropic S-1/A Amendment No. 2 (11-10, EDGAR 0001628280-26-072484)**: concurrently with the IPO, a private placement of **$26bn** of Class N (non-voting) shares to seven compute/chip suppliers, subscribed at the offering price — Google $10bn, Nvidia $10bn, AMD $2.5bn, Broadcom/Micron/Microsoft $1bn each, TSMC $0.5bn; in the same filing these seven are also direct or indirect recipients of its compute commitments (about $895.4bn in total). ⇒ A new form of #4 circular deals at the issuance stage: **suppliers subscribing to a customer's IPO**. CRWV closed 11-13 at 53.13 (−61.5% from high). (Disclosure: the source was written using an Anthropic model; negative information has not been softened.)
-- **11-09 update (weekly): #2 HY spread rose to 348bp on 11-05, a cycle high** — ✅ HY OAS 344 (10-30) → 332 (11-04) → **348bp (11-05)**, IG 91 → 93 (FRED); the same day as the 11-05 US sell-off, stocks and bonds moving in the same direction. CRWV closed 11-06 at 46.40 (−66.4% from high).
-- **11-06 update: #2 spreads fell after a 10-30 cycle high; Anthropic disclosed about $895.4bn in commitments** — ✅ HY OAS 326 (10-29) → **344bp (10-30, cycle high)** → 343 → 340 → **332bp (11-04)**, IG 89 → **94** → 91bp (FRED; the 11-05 sell-off reading was not yet available). ✅ Anthropic S-1/A (11-02): purchase commitments and leases, including those not yet commenced, entered into as of and after 09-30 total about **$895.4bn**, almost entirely compute and infrastructure, including about $447.5bn by end-2030; purchase commitments in the contractual-obligations table $313.8bn; 09-30 convertible notes $130.5bn and cash and short-term investments $131.8bn. ✅ AMD Q3 debt issuance net $4.73bn, total debt $3.23bn → $7.08bn (still net cash, §4.4 #5).
-- **10-31 update (weekly): #2 — broad spreads ease, but the borrowers funding AI build-out have widened from neoclouds to AAA-rated majors** — ✅ HY OAS **340 (10-22) → 330 → 318 → 314bp (10-28) → 326bp (10-29)**, IG 89→86→89bp (FRED); about half the widening was given back in a week, and the cycle high was thought to be 340 on 10-22 (⚠ 11-06 correction: FRED subsequently published 344bp for 10-30, the cycle high; see the preceding update). ✅ EDGAR: CoreWeave filed only Form 4s this week (10-30), no 8-K; CRWV closed at 54.87 on 10-30 (week +1.2%, but −9.7% on 10-30 alone, −60.2% from high). 🔴 **What is new this week is the majors' financing structure** (✅ the three companies' Q3 10-Q / 8-K filings): ① **Microsoft issued $25bn of bonds on 10-29** (ten maturities, 2028–2066, AAA; 🔶 media call it the first issue since 2017); Q3 capex $39.4bn, plus leases not yet commenced of **$364.6bn**; ② **Google issued $25.1bn of US-dollar bonds in Q3** (weighted coupon **5.55%**, 15-year tenor) plus Australian-dollar bonds, bringing 2026 issuance to **$80.8bn**; it also sold **$12.4bn** of stock via ATM (the company says mainly to cover taxes on employee equity awards; $27.6bn of the $40bn programme remains); Q3 free cash flow **−$9.1bn**, negative for a second straight quarter; ③ **Amazon added $48.1bn of long-term debt in Q3**, Q3 free cash flow **−$33.5bn**, TTM −$42.4bn. **Reading**: in 2000 the telecom borrowers were second-tier carriers; in this cycle, by Q3, three AAA/AA platforms are all using outside money to fill the capex gap. Credit quality is not in question and the rates are not expensive (Google's 5.55% is below the IG average of 5.79%), so this is not #2's "refinancing failure" — what it shows is that **AI capex has outgrown even the strongest cash flows' ability to fund it themselves**, a precondition for #1 / #5; it is recorded as a structural reading for #2, not a price reading.
-- ✅ **Circular deals have been officially quantified**: the IMF estimates that of the +12pp equal-weight return of the AI circle (Amazon/AMD/Alphabet/Intel/Microsoft/Nvidia/Oracle) from 2025-09 to 12, **7pp is attributable to self-reinforcing intra-circle correlation** (⚠ the IMF's own arithmetic is questionable: 7% × $2T ≈ $140B while the text says $40B — the true contribution may be understated ~3×). This is the modern form of vendor financing.
-- ⚠ **Revenue / investment mismatch** (2–1 votes, medium confidence): GMO cites estimates of 2025 AI **native / application-layer** revenue <$50bn vs $1tn+ invested that year; by mid-2026 OpenAI + Anthropic run-rate ~$55bn, 34 AI startups ~$80bn combined (Epoch AI); **08-06 update: Anthropic alone at a $47bn run-rate** ($30bn at the start of the year, $10bn for all of 2025, driven by Claude Code) — **nearly 4× in a year for one company; the mismatch is closing faster than previously estimated**, the strongest new evidence on the "real technological revolution" side; **but the mismatch is still an order of magnitude**. Basis note: excludes the pick-and-shovel sellers (NVIDIA data centre alone annualises above $300bn).
-
-### 2.3 The most important structural difference from 2000 ✅
-
-**NVIDIA fiscal 2027 Q1 (to 2026-04-26, SEC 8-K confirmed): quarterly revenue $81.6bn (+85% YoY), of which data centre $75.2bn (+92% YoY).**
-
-The 2000 top's valuations rested on loss-making dot-coms and "eyeballs"; today's AI infrastructure-layer valuations rest on **realised, audited revenue and cash flow**. This is the strongest reason the "78% wholesale crash" scenario **cannot be transferred directly** — and the core basis on which arXiv 2606.01575 (2026-05) judges "real technological revolution + localised layered bubble".
-
-### 2.4 Three-market first-hand data: three temperatures of one theme (A-shares and Hong Kong through the 2026-11-20 close; US through the 11-19 close)
-
-The same AI theme has **very different** valuation temperatures across three markets. A-share percentiles use a locally calculated five-year daily series; A-share and Hong Kong readings are at the 11-20 close — prices for the day are from Tencent quotes (🔶), with valuations and percentiles rolled forward from the 11-19 cross-section by the day's price change (⚠ derived); US prices are 11-19 closes; **US PE/PB and percentiles are the Sharadar 11-18 cross-section**, not recalculated at 11-19 prices.
-
-| Layer | Market / names | Reading (A-shares / Hong Kong 11-20 close; US 11-19 close) | Temperature |
-|----|----------|------|------|
-| **A-share compute chain: earnings accelerate, prices back at the cycle low** | Valuation (11-20) | Hygon 111.3x/**3**, Montage 40.8x/**0**, Eoptolink 15.8x/9, Zhongji Innolight 17.9x/**2**, WUS 23.1x/19, Foxconn Industrial 13.9x/31, TFC 42.3x/32, Envicool 83.4x/65, Cambricon 138.8x/**3** — **still no names at ≥80th percentile**; five of the nine moved to a lower percentile vs 11-19, four unchanged (Montage, Eoptolink, WUS, Cambricon) | 🟢 hot layer remains cleared |
-| | 🔴 **Structural temperature (#9): broad sell-off day, style gap widens further (11-20)** | style gap +15.0→**+20.4pp** (green power +5.9 vs core −14.5), still >0; **decliners 94% (99th pct of five years)**, sectors down 97%, median stock −5.08%, 190 stocks down 9.8% or more; CSI 300 −0.76%, SSE 50 +0.45% (🔶), CSI 1000 −4.89% — large caps were held up while small and mid caps fell across the board; **concentration 46.2%→44.0% / 78th pct**, back below the 45% warning line (⚠ computed from Tencent per-stock turnover, about RMB 1.43tn for the whole market, not reconciled with exchange figures); diffusion +9.8pp | 🔴 rotation continues, intensity rising again |
-| **Divergent: US** | Platform layer | NVDA 18.9x/**0th**/PB 6 (145.98, **−10.4% vs 11-13**, −39.0% from high), GOOGL 14.8x/1 (272.66, −32.2% from high), AMZN 21.5x/6/PB 1 (−9.4% from high), ORCL 18.4x/1 (110.57, −55.1% from high), META 20.9x/25 (−23.3% from high), MSFT 26.5x/18 (498.30, −10.3% from high) | 🔴 four platform names at 0–6th percentile, prices keep moving lower |
-| | Expensive in PB | MU PE 9.4/PB ⚠83 (690.44, −11.3% vs 11-13), MRVL 48.3/⚠84 (−56.2% from high), **AMD 114.1x/54/PB ⚠86 (489.19, −8.4% vs 11-13, −24.7% from high)**, TSM 24.5/40/75 (352.09, −11.7% vs 11-13), ANET 51.6/78/⚠81 | 🟡 PB percentiles ease, TSM leaves ⚠ |
-| | **neocloud** | CRWV **44.91** (close to the 11-05 lowest close of 43.66, −67.5% from high, PB pct 3); NBIS 251.6x/⚠86 (96.92, −16.4% vs 11-13, −66.2% from high) | 🔴 |
-| **Another dimension: Anthropic** | ✅ **424B4 (11-19, EDGAR 0001628280-26-074944, read in full)**: priced at **$83.00**, 6.4% above the top of the $70–78 range; **980 million shares** offered (company 956.35 million + selling shareholders 23.65 million), **$81.34bn** in total (🔶 media call it the largest IPO ever), over-allotment option 147 million shares; concurrent private placement $26bn, 313.25 million shares; net proceeds about $104.8bn; shares outstanding after the offering and private placement **13.220bn**; retail allocation "less than 20%". **First day (11-19, Nasdaq ANT)**: open $111.50 (+34.3%), high $115.10, low $92.72, close **$97.17 (+17.1%)**, the close 12.9% below the open (Tencent quotes and 🔶 CNBC/Forbes agree); volume 848 million shares (single source). At the closing price: **$1.28tn** on shares outstanding, 39.4x price-to-sales on H1×2; $1.56tn including options and RSUs (16.069bn shares); $1.71tn adding full conversion of the Amazon notes (17.617bn shares) (multiples are own calculation). **Perpetuals**: ANTUSDT 97.00 at the time of the close, basis to the stock −0.2%; OPENAIUSDT 1,321 (✅ Binance). (Disclosure: the source was written using an Anthropic model; negative information has not been softened.) | 🔴 #3 priced, first day done |
-| **Trough: Hong Kong** | Valuation | Tencent **344.0** (−1.3%, −11.0% vs 11-13; PE 11.9x, 2.8th percentile of its own five years, −10.0% over the past month); Hang Seng Index 22,410.8 (−1.89%), Hang Seng Tech 3,511.1 (−3.78%); 🔶 NetEase fell nearly 15%–19% intraday (media; Q3 net profit attributable −5.31% YoY) | 🟡 |
-| | 🔴 **Model stocks** | Zhipu **334.0** (−7.2%, −18.2% vs 11-13, −86.1% from high, below the 11-17 close of 335.0 and the lowest close since 02-11), MiniMax **102.4** (−10.8%, −32.8% vs 11-13, lowest close since listing, −91.7% from high) (11-20, 🔶 Tencent quotes; 🔶 media report both opened down more than 8% and fell more than 12% at one point) | 🔴 |
-
-**Marginal changes at the 11-20 close (A-shares / Hong Kong; US not yet open)**:
-
-① 🔴 **A-shares moved from "the compute chain falling alone" to "a broad small- and mid-cap sell-off"**: the median change across 5,573 stocks was −5.08% and 94% fell, a share at the 99th percentile of the past five years; the CSI 300 fell only 0.76%, the SSE 50 closed higher (🔶), and the CSI 1000 fell 4.89%. 🔶 Media closing reports say bank stocks were bid up late in the session, several to record highs, and that broad-index ETFs saw heavy buying; the explanations offered centre on three things — the US indices' fall of more than 2% the previous night, worry that the Federal Reserve will keep raising rates, and new US Commerce Department chip-control rules taking effect on 11-19 — and some institutions also cite a repricing of the AI sector after Nvidia's management change. These attributions are media and sell-side accounts, not independently verified here.
-
-② 🔴 **#9 style gap keeps widening, but crowding eased**: the style gap went +15.0→+20.4pp, with defensives extending their lead over the core on a broad down day (green power +5.9% over the past month, core −14.5%); the top 5% of stocks' share of turnover fell from 46.2% to 44.0% — turnover did not concentrate further into a few names; the whole market fell on higher volume. ⚠ Crowding is computed from Tencent per-stock turnover and is to be re-checked.
-
-③ 🟢 **#8 valuations moved lower again**: Zhongji Innolight 17.9x / 2nd percentile, Hygon 3rd, Montage 0; the basket is back at the 11-17 level of −59.1%. Recomputed the same day across the whole market: the share of A-shares at or below the 10th percentile of their own five-year PE rose from 18.2% (11-17) to 23.7%.
-
-④ 🔴 **Hong Kong model stocks made new lows**: MiniMax at HK$102.4 is its lowest close since listing, and Zhipu at HK$334.0 fell below the 11-17 close of 335.0. After Anthropic's first day of trading these two showed no "spillover rally": over two trading days they fell 15.4% and 9.0% respectively (from the 11-18 close). The ANTUSDT perpetual fell from 97.0 to about 91.1 while the US market was closed (11-20 10:00 UTC, ✅ Binance), about 6.2% below the stock's first-day close; this is a perpetual price during closed hours, not the stock price, and no conclusion is drawn before the stock opens on 11-20. (Disclosure: this document is written by a model made by Anthropic; negative information has not been softened.)
-
-The US rows (platform layer, PB, neocloud, Anthropic) are still 11-19 closing readings, and FRED spreads and rates still end at 11-18; they were not touched in this refresh.
-
-**Four key marginal changes on 11-19**:
-
-① 🔴 **#3: the supply extreme was realised in size, but not in the first-day gain**: Anthropic priced at $83, above the range; an $81.3bn offering plus a $26bn private placement is of a magnitude absent from the 1999 sample listed in §1.3. But the first day's +17.1% is far below §1.3's "first day +90%" tier; the shares fell back after opening +34% and closed 12.9% below the open; the same day Nasdaq 100 −2.2%, S&P −2.0% (🔶 media call it a sixth straight decline). The "spillover rally" discussed before the listing did not appear: Zhipu and MiniMax perpetuals fell about 6.5% and 4.7% respectively after it opened. (Disclosure: the source was written using an Anthropic model; negative information has not been softened.)
-
-② 🟡 **#5 Nvidia "fell after a beat"**: ✅ results after the 11-17 close (8-K 0001045810-26-000088 Exhibit 99.1, original text read): revenue $115.8bn (+103%, +20% QoQ), data centre $107.6bn (+110%), GAAP gross margin 74.8%, GAAP net income $65.3bn (+105%); Q4 guidance $130.0bn ±3% (including an extra week, excluding China data-centre compute revenue), gross-margin guidance 71.0%–72.0%, about 3 percentage points below this quarter. Cash quality: Q3 operating cash flow $48.3bn, 0.74 times net income; accounts receivable $81.0bn ($38.5bn at the start of the fiscal year), inventory $39.7bn ($21.4bn at the start of the fiscal year). No miss, no cut; #5 is not triggered. But the shares went from a close of 155.46 on 11-17 to a close of 145.98 on 11-19, −6.1% in two days, −39.0% from high. There was one corporate event in the same period: ✅ 11-12 announcement (8-K 0001045810-26-000082 Exhibit 99.1, original text read): Jensen Huang resigned as president, chief executive officer and director, effective immediately; chief financial officer Colette Kress becomes interim chief executive officer while keeping her existing role; Harvey Jones becomes the first-ever Chair of the Board; the board has begun a search. The announcement does not state a reason for the resignation. The decline coincides with a fundamental event and cannot be read as a purely sentiment-driven mispricing.
-
-③ 🔴 **#2 spreads back near the high, #7 index at a cycle low**: HY OAS 320→**347bp** (11-18), the whole easing given back in one week; VIX 19.3→24.6 (11-18); Nasdaq 100 closed at 26,517, below the close of the 11-05 sell-off day. 10Y 5.10%→5.15% (11-13)→5.07% (11-18); rates added no further pressure this week, and the pressure has moved from the discount rate back to credit and share prices. CoreWeave's Q3 report (✅ original text read): revenue and orders accelerating, debt principal up to $47.5bn, interest 4 times operating profit; the shares rose 24.7% on the day after results and gave it all back over the following six trading days.
-
-④ 🔴 **A-share compute chain makes another new low, #9 style gap widens again**: the basket fell 9.8% on 11-16 alone and closed 11-17 at −59.1%, a cycle low; style gap +5.6→+15.0pp, overturning the previous edition's "close to zero"; AI-theme stock pool 418→391. Valuations keep moving lower (Zhongji Innolight 3rd percentile, Hygon 6th, Montage 0th) while Q3 growth rates are unchanged — still "earnings accelerate, prices collapse". #1 has no new reading this edition and remains unlit.
-
-### 2.5 The periphery breaks first: Korea's circuit breaker (interim refresh, 10-15)
-
-**Facts (🔶 Xinhua / Sina / Korean media; index and single-stock closes cross-checked against Yahoo)**: on 10-15 the KOSPI closed at **5,554.22, −7.57%**; an 8% intraday fall triggered a 20-minute circuit-breaker halt (**the tenth this year**), and the KOSDAQ halted the same day. **Seven straight down days total −20.7%** (from 7,004), a **−39.1% drawdown from the 06-22 high of 9,114.55**, yet the year is still **+31.8%** (2025 close 4,214.17). Samsung **−9.48%**, SK hynix **−11.06%**. Foreign investors net sold **about ₩3.64 trillion (about $2.7 billion)** of KOSPI stock on the day (closing basis; Pinpoint News trading table ₩3.635 trillion, consistent with Field News and others). From the start of the year to 10-12, foreigners net sold **₩199.1 trillion** of KOSPI stock, **87% of it in Samsung plus SK hynix** (Chosun Ilbo citing the Korea Exchange, via The Paper). Korean power-equipment names fell hard as well (Hyosung Heavy −14.7%, LS Electric −12.1%, HD Hyundai Electric −10.3%). ⚠ Corrections: ① the widely circulated "Samsung −9.9% / SK hynix −11.3%" were pre-close prices; the closes are as above; ② the first 10-15 version of this section said "foreign selling ₩4.82 trillion, ₩16.1 trillion over eight days", taken from Wall Street CN; it does not match Korea's own closing statistics and **has been withdrawn**, as has the first version's claim that "₩3.6 trillion is wrong" (pointed out by cross-review).
-
-**The US periphery on the same day (10-14 closes)**:
-
-| Name | Day | 5 days | From 52-week high |
+| Phase | Date | Nasdaq Composite | Note |
 |---|---|---|---|
-| CoreWeave | −15.5% | −25.6% | **−54.0%** |
-| Oracle | −8.8% | −8.7% | **−57.7%** |
-| Broadcom | −3.1% | −8.0% | −27.9% |
-| Micron | −4.1% | −16.0% | −24.7% |
-| TSMC | −3.4% | −8.9% | −11.5% |
-| **Nvidia** | −3.2% | −6.8% | **−7.5%** |
+| Peak | 2000-03-10 | 5,048.62 | The ten weeks before the peak were when IPO returns were highest |
+| First plunge | 2000-04 | about −25% in one week | — |
+| Full year 2000 | — | −39.3% | A marked summer rally |
+| Full year 2001 | — | −21.1% | A large rally from after 9/11 into early 2002 |
+| Full year 2002 | — | −31.5% | WorldCom and Enron accounting scandals ❔ |
+| Trough | 2002-10-09 | 1,114.11 | **−77.9%** cumulatively, over about **31 months** |
 
-Macro the same day: September CPI **3.7%** (August 3.4%), core **2.6%** (August 2.45%), core month-on-month **+0.33%** (✅ BLS first-hand); 10Y closed at **5.19%**, HY OAS 311→**325bp** (10-09→10-14, ✅ FRED). ⚠ "10Y at 5.32% intraday" and "CoreWeave bond yield 14.8%" appear only in Wall Street CN; unverified, not used.
+The bust was a staged decline, not a single crash. The bottom came about two and a half years after the top; money that went in after the first plunge most likely had another year or two of losses ahead.
 
-**Five implications for this study (this page's judgement)**:
-1. **"The bubble sits in the supply chain" is borne out, and the break runs from the outside in**: the deepest falls are in the most levered, most cyclical periphery (neoclouds, Oracle, memory), while the demand-side core, Nvidia, is only −7.5% from its high — consistent with §2.4's layered call since July that the heat is on the supply side.
-2. **What fell was valuation and funding, not earnings**: Samsung's preliminary Q3 operating profit was **₩107.4 trillion** (🔶 Samsung's 10-07 preliminary results, via Kyunghyang, Dong-A and others; the first Korean company to top ₩100 trillion in a quarter), about **8.8×** the ₩12.2 trillion of a year earlier, and the shares fell after the release. Foreign outflows + the end of roughly ₩55 trillion of combined buybacks at the two companies + shrinking retail leverage add up to a hole in the bid, not a collapse in demand — the same family as TSMC's July "capex raise read as bad news": good news is no longer rewarded.
-3. **#2 credit and #6 inflation deepened on the same day**: CoreWeave −54% over 52 weeks, HY spreads +14bp in three days; headline and core CPI both rose, raising the risk of another hike at the 10-28 FOMC.
-4. **#5 is still not lit**: leader earnings still beat; #1 and #5, the two most reliable triggers, are both unlit ⇒ **a system-level break is still not confirmed**.
-5. **"AI power" is no safe haven in Korea**: power equipment fell with the chips. The defensive end of A-share #9 is green-power **operators** (utility-like), which is different, so the #9 logic is unaffected for now.
+### 1.2 Valuation at the peak ✅
 
-**10-31 follow-up adjudication (✅ all three settled)**: ① **Not retaken** — the KOSPI has closed below its 200-day average for 13 straight trading days since 10-13; its highest close was 6,012 on 10-28 (average about 6,473), and it closed at **5,730.74** on 10-30 (average about 6,488, ✅ Yahoo); on the Chosun Ilbo's counting basis it is still 7 trading days short of "≥20 days below the line", and the count continues. ② **The 10-28 FOMC held** (3.75–4.00%, 10–2, with Cook and Hammack favouring a hike, ✅ Fed statement); the long end rose 6bp that day and eased over the next two days, the 10Y closing at 4.94% on 10-30. ③ **The core followed down but has not cleared** — Nvidia's distance from its high widened from −7.5% (10-14) to **−14.5%**, TSMC's from −11.5% to **−16.4%** (10-30, ✅ this page's first-hand data); the periphery is still far deeper (CoreWeave −60%, Oracle −50%). On 10-30 alone Nvidia −4.2%, TSMC −5.9%, AMD −10.9% — the largest synchronised fall in the core layer this cycle, but by this section's definition "the core catching down" has not yet happened. ⚠ The 10-15 original text follows:
-**To be tested**: ① whether the KOSPI retakes its 200-day average within two weeks (⚠ Chosun Ilbo's count: of stays below the line of ≥20 trading days, about 64% became declines of three months or more); ② the 10-28 FOMC; ③ **whether Nvidia / TSMC catch down — if the core catches down, "the periphery clearing out" becomes a systemic break**.
+- The Nasdaq-100 traded at about 250 times trailing earnings at the peak (⚠ trailing basis; on a forward basis about 60 times, and any comparison with today must use the same basis).
+- The S&P CAPE peaked at 44.2 (1999-12), the highest on record; the mean since 1880 is 17.6.
+- The S&P 500 fell about 49% peak to trough over the same period ❔. The claim that the bubble was confined to the Nasdaq has been rejected.
 
-### 2.6 China's A-share + Hong Kong AI chain: peaked before Korea and fell further (interim refresh, 10-15)
+### 1.3 IPO mania: the measurable features of a top ✅
 
-> Basis: 10-15 moves are Tencent quote closes; historical ranges, P/E and five-year percentiles come from our own five-year percentile series (to the 10-14 close; percentiles sampled weekly, P/E > 0 only). This section is computed on the spot.
-
-**On 10-15 (against KOSPI −7.57%)**: Shanghai Composite −1.59%, CSI 300 −1.23%, ChiNext −2.92%, STAR 50 −1.50%, Hang Seng −1.03%, Hang Seng Tech −2.72%.
-
-**Equal-weight A-share compute basket** (Cambricon / Hygon / Zhongji Innolight / Eoptolink / TFC / WUS / Victory Giant / Foxconn Industrial Internet / Montage / Envicool, chained daily pct_chg): **peaked on 06-25, almost together with the KOSPI's 06-22 high; drawdown to 10-15 −41.0%**, −20.2% over the last 20 trading days, −11.8% over the last 5.
-
-| Name | 10-15 | 1 month | From 52-week high | P/E TTM | 5-year pct. |
-|---|---|---|---|---|---|
-| Zhongji Innolight | −5.2% | −27.1% | −52.4% | 39.9x | 47 |
-| Eoptolink | −7.5% | −26.5% | −49.9% | 35.2x | 38 |
-| Hygon | −3.8% | −18.2% | −47.7% | 149.0x | 35 |
-| Montage | −6.2% | −16.7% | −48.3% | 69.0x | 44 |
-| Foxconn Industrial Internet | −3.9% | −27.6% | −41.5% | 20.6x | 62 |
-| Envicool | −5.5% | −29.1% | −51.9% | 123.1x | 78 |
-| TFC Optical | −2.5% | −13.4% | −36.9% | 107.6x | 87 |
-| WUS Printed Circuit | +1.0% | −7.0% | −25.0% | 43.7x | 88 |
-| GigaDevice | −4.9% | −27.9% | **−66.9%** | 26.0x | 9 |
-| CXMT | −5.2% | −25.3% | −29.5% | 38.2x | recent listing, no pct. |
-| NAURA | **+4.0%** | −5.8% | −34.7% | 74.9x | 68 |
-| SMIC (A) | **+1.8%** | −14.1% | −39.6% | 121.8x | 61 |
-| Inspur | −3.7% | −21.1% | −36.9% | 19.1x | 17 |
-| Kingsoft Office | +1.4% | −1.2% | −38.5% | 29.5x | 3 |
-| Desay SV | −2.8% | −16.9% | −51.7% | 17.9x | 0 |
-
-**Hong Kong**
-
-| Name | 10-15 | From 52-week high | Year to date |
-|---|---|---|---|
-| MiniMax | −12.1% | **−85.5%** | recent listing |
-| Zhipu | −10.2% | **−78.7%** | recent listing |
-| Hua Hong Semiconductor | −7.8% | −64.4% | +3.3% |
-| Lenovo | **−14.5%** | −30.9% | **+184.4%** |
-| SMIC (H) | −4.0% | −41.7% | −26.9% |
-| Xiaomi | +2.7% | −49.2% | −30.9% |
-| Tencent | −1.3% | −37.4% | −29.4% |
-| Alibaba | −3.7% | −38.6% | −25.4% |
-
-**Readings (this page's judgement)**:
-1. **China's AI chain was not dragged down by Korea**: the compute basket peaked in late June together with the KOSPI, but had already completed a deeper fall (−41% vs −39%, with the median name about −48% from its high), so the 10-15 shock was comparatively small.
-2. **The A-share valuation peak has largely cleared**: Hygon's percentile fell from 100 in July to 35; the only basket names still high are TFC (87) and WUS (88) — the #8 micro hot layer in §4.4 has cooled markedly.
-3. **Memory moved with Korea; equipment and foundries went the other way**: GigaDevice −67% from its high, CXMT −25% over a month; NAURA and SMIC A closed up on the day — the domestic-substitution logic was not hit by the Korean event.
-4. **Hong Kong is split to the extreme at both ends**: the model companies are about 80% off their highs; Lenovo, +184% on the year, fell 14.5% in a day (the Hong Kong name that most resembles Korean memory); the platforms Tencent and Alibaba are already down about 30% on the year and edged up over the last five days.
-5. ⚠ Cambricon's P/E percentile shows 0 and is unusable: it was loss-making for most of its history, so there are too few positive samples.
-
-### 2.7 China's broad A-share index enters a bear market: CSI 300 −20.2% from its high (interim addition, 10-22)
-
-> Origin: on 10-22 a market commentary (an X post) said "China's stock market has officially entered a bear market". Its A-share figures were checked one by one: closes and turnover from Tencent quotes for the 10-22 close; history from akshare's Sina index daily series (from 2002); the bear-market rule is this page's own recomputation (a close ≥20% below the prior high marks entry; a ≥20% rebound from the bear-market low marks exit).
-
-**10-22 close (✅)**
-
-| Index | Close | Day | 2026 high | From high |
-|---|---|---|---|---|
-| CSI 300 | 4,036.3 | −1.84% | 5,059.7 (06-22) | **−20.2%** |
-| Shanghai Composite | 3,658.0 | −1.48% | 4,242.6 (05-13) | −13.8% |
-| Shenzhen Component | 11,357.3 | −2.96% | 16,372.5 (06-22) | −30.6% |
-| ChiNext | 2,576.9 | −4.37% | 4,372.0 (06-25) | **−41.1%** |
-| STAR 50 | 1,305.9 | −2.78% | 2,207.9 (06-30) | **−40.9%** |
-| Equal-weight AI compute basket (same basis as §2.6) | — | −5.5% | 06-25 | **−43.8%** |
-
-- The CSI 300 rose about 60% from its 2024-09-13 low of 3,159 to the 06-22 high and has since given back 54% of that gain.
-- On the weekly chart it had **fallen ten weeks in a row** to 10-16, the longest run since data begin in 2002 (the previous longest was nine weeks, January 2012); the week of 10-22 is still down.
-- CSI 300 turnover on 10-22 was **CNY 435.1bn**; ⚠ the commentary put 06-22 at CNY 1.15tn, but this page has not obtained that day's figure — unverified.
-- Attribution: Bloomberg reportedly said A-shares were weighed down by "the AI trade ebbing and policy expectations disappointing" (⚠ as relayed by the commentary; the original was not read).
-
-**CSI 300 after entering a bear market (✅ recomputed here, seven cases since 2010)**
-
-| Entry date | Prior high | Next 60 trading days | Deepest within 60 days | Next year |
-|---|---|---|---|---|
-| 2010-05-06 | 3,669 (2009-12) | −1.1% | −13.3% | +7.7% |
-| 2011-08-08 | 3,549 (2010-11) | −2.4% | −10.2% | −17.2% |
-| 2013-06-24 | 2,776 (2013-02) | +14.1% | −0.5% | 0.0% |
-| 2015-06-29 | 5,354 (2015-06) | **−22.2%** | −27.8% | −23.3% |
-| 2016-01-21 | 3,877 (2015-12) | +3.0% | −7.4% | +9.5% |
-| 2018-06-27 | 4,390 (2018-01) | −4.2% | −7.4% | +9.9% |
-| 2022-01-27 | 5,808 (2021-02) | −13.2% | −18.1% | −10.3% |
-
-Both of the commentary's statistics hold: 60 trading days later the index was **lower in 5 of 7 cases**; one year later **3 up, 3 down, 1 flat**.
-
-**Readings (this page's judgement)**:
-1. **The broad index was dragged into a bear market by the AI core**: the AI compute basket is −43.8% and ChiNext and STAR 50 about −41%, while the Shanghai Composite is only −13.8%. The decline scales with AI weight — the same story as §2.6, "China's AI chain peaked before Korea and fell further", now transmitted to the CSI 300.
-2. **"Entering a bear market" is not a bottom signal**: in all seven past cases the index went below the entry-day close within the next 60 trading days (median deepest −10.2%; only −0.5% in 2013), and a year later the outcomes were evenly split — a break is not a one-off opportunity, and a rebound is not confirmation.
-3. **About four months after the peak**: set against the roughly 31-month staged decline of 2000, the A-share AI chain would be in an early phase if it followed the same rhythm; but with past A-share bear entries split evenly a year on, the 2000 path is not the only template.
-
-## 3. AI bubble vs. dot-com bubble: differences and transferability
-
-| Dimension | 2000 internet | 2026 AI | Lesson transferable? |
-|------|------------|---------|-------------|
-| Peak valuation | NDX trailing ~250x, CAPE 44.2 ✅ | CAPE 40–41.6 (second highest) ✅; leaders trailing 20–30x | **Partly** — the aggregate is not at the 2000 extreme, but the A-share compute chain and the US narrative layer are at their own extremes |
-| Leader earnings | loss-making dot-coms + expectations | NVDA $81.6bn of real quarterly revenue ✅ | **Not directly transferable**: "−78% wholesale crash" |
-| Infrastructure financing | telecoms **borrowed** to lay fibre → debt crisis ❔ | mostly cash-funded, but bond issuance >$100bn and accelerating since 2025 ✅ | **Becoming transferable** — debt financing is the slope to watch most |
-| Vendor financing / circularity | Cisco-style equipment financing ❔ | IMF has quantified the circle's self-reinforcement ✅ | **Transferable** — the same mechanism, modern form |
-| IPO / issuance mania | 289 internet IPOs, +90% first day ✅ | not yet at 1999 levels (AI IPOs hot but share well below 60%) ❔ | **A transferable leading indicator** — watch the issuance share drift toward 1999 |
-| Concentration / transmission | relatively contained (though S&P also −49% ❔) | 30 stocks = 44% of S&P, HHI 97.7th pct, household exposure 30% ✅ | **Worse** — a break would transmit more widely than 2000 |
-| Revenue mismatch | revenue essentially zero | native layer ~$55–80B run-rate vs $1T+/yr invested, closing fast ⚠ | **Half transferable** — the mismatch exists but the direction is improving |
-| Expected shape of a break | 31 months of staged declines ✅ | if it breaks, similar mechanics (several false bottoms and rallies) | **Transferable** — any response must be scaled to the whole clearing period, not the first leg |
-
----
-
-## 4. Probability and timing of a break: an honest framework
-
-### 4.1 The academic floor: timing is unforecastable ✅
-
-Greenwood–Shleifer–You (JFE 2019; US 1926–2014 + international 1985–2014):
-
-1. A sharp industry run-up **on average does not predict** low subsequent returns — "it rose too much" alone **cannot call a top** (the stretch before a top is exactly the most profitable; see the 1999 IPO data).
-2. **But** sharp run-ups raise crash probability markedly: **after a 100% two-year rise, the probability of a 40%-class drawdown within two years is about 53%** — that precondition (~100% in two years) **already holds** for the AI leaders.
-3. **Accompanying features** (rising volatility, rising turnover, heavy new issuance, an accelerating price path) help predict the eventual crash.
-
-arXiv 2606.01575 (2026-05) argues explicitly that bubble frameworks are **for diagnosis, not deterministic prediction** — markets can correct years after showing bubble features, or digest valuations through earnings growth. **Any "forecast" naming a specific date is false precision.**
-
-### 4.2 The spectrum of institutional views (mid-2026) ✅
-
-| Camp | Representative | Judgement |
-|------|------|------|
-| Bubble | GMO (Grantham/Chancellor, 2026-01) | "We are in a US equity and AI bubble"; most investors will suffer large losses at some stage; **no date given** |
-| Layered middle | arXiv 2606.01575 (2026-05) | real technological revolution + localised bubble: infrastructure leaders = boom; **private foundation-model firms, weak-moat application layer, aggressively assumed data-centre projects = the bubble layer** |
-| Official caution | IMF GFSR (2026-04) | valuations high but the deviation from fair value is **far below historical peaks**; names circular deals and debt financing as risks |
-
-**Not one of them gives a date for a break.**
-
-### 4.3 Scenario framework and subjective probabilities (⚠ this report's judgement, not confirmed fact)
-
-Based on the GSY base rate (53% / two years / 40%-class), the layered evidence and the three-market cross-section, **subjective** scenario probabilities:
-
-| Scenario | Description | Subjective probability | Timing clues |
-|------|------|---------|-----------|
-| **A. Layered rolling clear-out** (base case) | the narrative layer (loss-making neoclouds, weak applications, high-percentile A-share compute names, Arm/DDOG-style pricing) is repriced in stages, −40 to −70%; the platform layer corrects −20 to −35% and is caught by earnings; index-level drawdown 20–30% | **~45%** | rolls through 2026H2–2028, no single "break day" |
-| **B. Systemic sharp break** (2000 replay) | trigger chain: collective capex-guidance cuts / a neocloud credit event / macro tightening → a 31-month-style grind, Nasdaq-level −50%+ | **~25%** | if it happens, most likely **6–12 months after capex growth peaks**; watch 2027 ± 1 year (the Goldman/IMF life and utilisation assumptions and the "EPS 30–35% CAGR to digest valuations" test all come due in 2027–2028) |
-| **C. Earnings digestion, no break** | native-layer revenue keeps closing the mismatch at ~3×/yr ($55B→$150B+); valuations tread water while EPS grows into them (a continuation of 1995–98 or 2023–26) | **~30%** | lasts several years |
-
-**If "when" must be answered**: the window with the highest probability density is **2027 ± 1 year** — not because a date can be computed, but because three evidence lines "hand in their papers" then: ① the chip-life / utilisation assumptions in Goldman's capex model start to be adjudicated by actual depreciation and returns; ② the IMF's "EPS needs 30–35% CAGR" reversion test falls in 2027; ③ if issuance / debt heat is extrapolated at the current slope, it approaches 1999-style readings around 2027. **Treat this as scenario reasoning, not a forecast — per §4.1 the timing is inherently unforecastable, and any response hangs on triggers, not on the calendar.**
-
-#### Appendix: ranking of detonators for a crash before 10/31 (worked out 2026-08-22; ⚠ all conditional probabilities — conditional on "a crash occurs", not predictions of a crash)
-
-**Framework**: timing is unforecastable (§4.1), so this is only a "pre-written post-mortem". Background pattern = **"denominator relief (#6 turning dovish) + supply extreme (#3 peaking)", i.e. the 1999Q4 pattern**; the 2000-03 top was detonated by the issuance side, not the earnings side. The six calendar-densest weeks in the window = late September to late October (S-1 flip end-August → roadshow September → FOMC 9/15–16 → new fiscal year 10/1 → **Anthropic IPO pricing mid-October** → FOMC 10/27–28 → big-tech Q3 earnings late October).
-
-| Rank | Detonator | Conditional probability | Mechanism | Warning indicators (all monitored) |
-|------|--------|---------|---------|---------------------|
-| ① | **Anthropic IPO pricing / break-issue event (October)** | **~25–30%** | three layers: a $100bn raise = the largest liquidity drain ever (SpaceX precedent: −45% itself post-listing); pricing at $1.2–1.5tn → four-tier ladder repriced −25 to −40% **and the write-down flows straight into AMZN/GOOGL P&L** (19pp of S&P's +48% earnings growth is paper revaluation gains) → #5 ignites automatically through accounting; a broken issue = this cycle's "AOL–Time Warner moment" | S-1 audited revenue vs the $65bn run-rate; secondaries / perpetuals falling during the roadshow; pricing range vs the $2tn discount |
-| ② | **AI credit event (CoreWeave/Oracle)** | ~15–20% | CRWV debt $35.6bn + covenants locked + deferred-revenue reclassification questions; Oracle BBB- / FCF −$23.7bn; Moody's "weakest credit link"; **2000 telecom order = credit cracks first, equity crashes after**; more likely ignited by ① or ③ than independent | CDS spreads (criterion not converged); refinancing terms; rating actions |
-| ③ | **NVDA 8/26 short of a "big beat"** | ~15% | expectations ($93–95bn) > guidance ($91bn); "in line" could be read as a miss; alone = a correction, but it is the fuse for ① and ② | verified directly four days later |
-| ④ | **Hawkish Fed surprise (9/15–16 or 10/27–28)** | ~10–15% | hike odds cut to ~25% and positioning set for denominator relief = asymmetric; Warsh "no soft target" + three voters already voted for a hike in July; stacked with ① = a full 1999→2000 replay | September CPI; FOMC vote structure |
-| ⑤ | **Geopolitical jump (Taiwan Strait / tech-war escalation)** | ~10% | lowest probability, highest intensity, **entirely unwarnable** (§5 item 6: "low platform percentile = safe" fails in a Taiwan scenario); FCC category bans / H200 quotas / White House accusations against Moonshot = the slope is steepening | none — exposure can only be limited in advance |
-| ⑥ | Technical liquidity stack (shutdown 10/1 + refinancing + $100bn drain) | ~5–10% | an amplifier, not a detonator; three events in one month | shutdown talks; Treasury issuance calendar |
-| — | A-shares detonate on their own | ~5% | #9 rotation to zero / concentration breaking the line / hot chain cooling — **a follower pattern, not a detonator pattern** | — |
-
-> **10-27 addendum**: the precondition for ① has happened — Anthropic's public S-1 was filed on 10-26 (✅ EDGAR), but the price range is blank and pricing falls in November ⇒ **① did not fire within the 10/31 window and moves to the November window as a detonator**; on 10-26 the perpetual spiked and faded (high 1,972 / close 1,882), and the warning indicator for "a cold roadshow / discounted pricing" (the perpetual is −6% vs the rumoured $2 trillion valuation) is being watched. The "$100bn liquidity drain" in ⑥ moves later as well.
-
-> **10-31 addendum (equity-side reading settled; scoring on 11-01 together with the crypto side)**: 10-30, the last trading day of the window, has closed. NDX closed at **28,384.85**, a **−9.1%** drawdown from its rolling 2026 high of 31,224.47 (10-06); the largest drawdown on any 2026 trading day against the rolling high was **−11.8%** (03-30, against the 01-28 base of 26,022.79) (✅ ^NDX index closes, Yahoo). ⇒ **By the pre-registered threshold (≥15%) the verdict is "did not occur"**. Of the three branches this falls on the "did not occur" side; whether it scores as a "false alarm" or "quiet" requires, under rule 4, checking class by class whether warnings fired, and it will be scored on 11-01 together with the crypto-side reading — this page draws no conclusion in advance.
-
-> **11-06 addendum (outside the window, score unchanged)**: NDX fell **6.4%** on 11-05 to 26,629.81, **−14.7%** from the 10-06 high (✅ Yahoo index close), still short of the 15% threshold and after the 10/31 window; this does not affect the 10/31 score. For comparison with the detonator ranking, 🔶 media cited year-end hedge-fund profit taking, retail sales and post-election regulatory concerns; **none cited ① (Anthropic pricing), credit, or earnings as a cause**. Anthropic's 11-02 S-1/A still leaves the range blank.
-
-**Composite judgement**: if a crash occurs, the most likely post-mortem is one chain — **NVDA short of a "big beat" (8/26) → compute narrative cools → Anthropic roadshow cold / priced at a discount (October) → AMZN/GOOGL revaluation reverses + CRWV spreads blow out → earnings and credit light up together → late-October Q3 earnings confirm**. The single highest-weight event = **Anthropic's IPO pricing day** (a liquidity, accounting and narrative event at once).
-
-**Scoring rules, pre-registered (2026-08-24; not to be revised after a trigger)**:
-1. **Adjudication date**: 2026-11-01;
-2. **Crash definition (equity side, mechanical threshold)**: **NDX close ≥15% below its highest 2026 close**, on any trading day up to and including 10/31 ⇒ "occurred". NDX is chosen because this cycle's AI concentration is highest there and it maps directly onto the chain above; one threshold, no discretion. (Crypto-side counterpart: BTC Binance perpetual close < $58,605, registered separately);
-3. **Detonator "hit" criterion**: within **7 calendar days** before the start of the crash's initiation leg, at least one of that detonator's warning indicators has fired **and it is the earliest to fire among all detonators**. **Initiation-leg start (equity side)** = during the fall to −15%, **the first trading day with a single-day close ≤ −3.5%**; absent such a day (slow-grind form), **the first trading day the drawdown closes beyond −10%**. Equity and crypto post-mortems are written independently then reconciled; disagreements kept as dual records;
-4. **Three-branch scoring**: occurred → score ranking quality + warning lead; did not occur but ≥2 classes of warnings fired → score a false alarm and grade each indicator; did not occur and quiet → examine which counter-argument (the counter section of this §4.3 appendix) did the work;
-5. **The probability numbers themselves are not scored** — a single event cannot calibrate probabilities (the table's probabilities are subjective declarations, calibration history n=0, not to be adjusted after the fact); only the ranking and warning lead are scored, which is all that n=1 can honestly test.
-6. **Reading rules for adjudication (added 2026-08-30: thresholds untouched, only the reading pinned; not a character of the thresholds has changed since registration)**: ① **denominator basis**: "highest 2026 close" = **the rolling high as seen from the adjudication date** (on any adjudication day t only the highest close in [2026-01-01, t] may be used — if a new high is made before adjudication, the base moves up with it, a natural property of a drawdown definition, not drift, no discretion); ② **adjudication series pinned**: NDX closes are **Nasdaq's official index closes** (channel ^NDX; index closes differ from futures settlements and **are not revised after the fact**, so no T+2 wait; in the rare event of a vendor correction, the corrected value governs with both values recorded); ③ numerator and denominator **from the same series on the same basis** — no futures/ETF numerator against an index denominator.
-
-⚠ **Boundary statement on the calendar argument**: "September–October is calendar-densest" in this appendix describes event concentration; **it is not a basis for action** — all-green warnings with the calendar arriving constitute no reason to do anything; the calendar answers only "if it breaks, roughly when", never "will it break".
-
-**🔴 Scoring the first link of the chain (2026-08-27; NVDA Q2 FY2027 results in)**:
-
-**Result = big beat; the first link did not fire.** Revenue **$96.2bn** (+106% YoY, **+4.4%** above the $92.2bn consensus and **through the top of the $93–95bn whisper range**); adjusted EPS $2.22 (expected $2.10); **gross margin 75%, no erosion**; data centre +117%; **Q3 guidance $108bn ±2%** (expected $104.2bn, +3.6% above); the call guided **FY28 revenue growth ~70%**; ⚠ **guidance counts China data-centre revenue as zero** — any easing of controls is pure upside.
-
-**Precise path of the event shock (Binance `NVDAUSDT` stock perpetual, 5-minute bars, 08-26 UTC)**:
-| Time | Price | Event |
+| Measure | 1998 | 1999 |
 |---|---|---|
-| 19:00 | 211.45 | pre-release |
-| **20:20** | **close 208.05, wick low 203.80** (volume 589k = 20× normal) | **sell-the-news at release, −3.6%** |
-| 21:00 | 214.87 | call begins |
-| 21:20→21:50 | 218.69 → **peak 220.45** | **FY28 +70% guidance ignites** |
-| 23:20 | 218.44 | holds the high |
+| Internet IPOs | 42 | 289 |
+| Proceeds | $1.96 billion | $24.66 billion |
+| Share of all IPOs by count | 14% | 60% |
+| Average first-day gain | — | +90% |
+| Year-end price versus offer | — | +266% on average |
 
-**Reading**: ① **net event shock +3.2 to 4.3%; the results were not priced in beforehand** — but the real incremental information **was not the Q2 numbers** (absorbed by the whisper, hence −3.6% at release) **but the call's FY28 outlook**; ② **#5 (leader earnings-miss chain) clearly did not light this round**: the "expectations above guidance = tiny margin for error" risk was actively repaired before results (sell-side estimates fell back to $91–92B), and the actual result far exceeded even the repaired expectations; ③ by the §4.3 ranking, **detonator ③ (NVDA short of a "big beat", ~15% conditional) did not hit** — the chain's starting point failed, so ② (credit) and ① (Anthropic IPO) lose this fuse, but **their independent paths are unaffected**.
+Sources: WilmerHale's end-1999 report and Jay Ritter's database. When these numbers appeared, the top was ten weeks away.
 
-⚠ **Same-day macro headwind**: July core PCE +0.2% m/m (below expectations) but **3.3% y/y**, headline PCE **3.7%** y/y (the expected fall to 3.6% did not happen); Q2 GDP 1.5% not revised down; **real consumption ~0% m/m**. Fed funds 3.50–3.75%, unchanged in 2026; **September cut odds ~1%, hike 33–40%, cumulative hike odds for the year ~70% (largest window 12/8–9)** — **#6's hawkish undertone is stronger than the mid-August "turning dovish" reading; the trigger must be re-assessed in the next report**.
+### 1.4 After the bust ❔
 
+- **Cisco**: about −89% from its peak; its first record close since 2000 came on 2025-12-10, some 25.7 years later.
+- **Nasdaq**: back to 5,048 only in 2015-04, about 15 years.
+- **Amazon**: $107 → $5.97 (2001-10), about −94%; afterwards one of the biggest winners.
+- **Infrastructure glut**: fibre laid with borrowed money ran at low utilisation for years, and the telecom casualty list was longer than the internet one.
+- **Buffett**: in 2002–2003 he bought mispriced credit, including Amazon junk bonds. The good opportunity after a bust is not necessarily equity.
 
-### 4.4 Leading-indicator dashboard (triggers, ranked by historical reliability)
+### 1.5 Base rates of recovery: heavily right-skewed ✅
 
-| # | Indicator | 2000 counterpart | Current status | Meaning if triggered |
-|---|------|----------|--------------------| ---------|
-| 1 | **First collective cut to hyperscaler capex guidance** | telecom capex inflection led the Nasdaq bottom ❔ | 🟡 **Still not triggered (11-20)**: no new hyperscaler capex guidance this edition. ✅ CoreWeave raised the lower bound of its 2026 capex guidance from $35bn to $37bn (range $37–39bn, press release text); ✅ Nvidia Q4 revenue guidance $130.0bn ±3% (press release text) — what the supply side shows is still added orders, not cuts. | **the most reliable top signal**; **⚠ reading revised: the market rewards not "restraint" but "spending that yields visible returns" (Apple as the counter-example) — the original definition "collective capex cut" has partly failed as a top signal; watch #5 (earnings/returns) instead** |
-| 2 | **AI bond / neocloud credit spreads widen, refinancing fails** | telecom default wave ❔ | 🔴 **Back up to 347bp, the previous edition's easing not confirmed (11-20)**: HY OAS 320 (11-12)→323→334→343→**347bp (11-18)**, IG 89→93 (✅ FRED), 1bp short of the cycle high of 348; CRWV **44.91** (11-19, post-results gain fully given back, less than 3% from the 11-05 lowest close of 43.66, −67.5% from high, PB percentile 3). ✅ CoreWeave Q3 report (11-10, missed in the previous edition; press release and 10-Q read in the original): revenue $3.661bn (+168%), net interest expense $846m against operating profit $207m, net loss $709m, debt principal $47.5bn ($11.0bn maturing in 2027), backlog about $132.5bn. A solvency breakdown is in §2.2 "11-20 addition": cash-basis interest coverage of 2.7 times, liquidity of $9.84bn against $11bn due in 2027 — default looks unlikely in the near term but it depends on continued refinancing; five observable checkpoints for "refinancing failure" are listed. | debt-financing slide confirmed; **primary-market terms are the hardest credit signal** |
-| 3 | **Issuance mania approaching 1999 levels** (AI IPO / secondary share → 60%, first day +90%) | ✅ quantified benchmark in §1.3 | 🔴 **Priced above the range, first day +17.1% (11-20)**: ✅ 424B4 (EDGAR 0001628280-26-074944, read in full) priced at **$83.00** (range $70–78), 980 million shares offered, $81.34bn, concurrent private placement $26bn, net proceeds about $104.8bn, 13.220bn shares outstanding after the offering, retail allocation "less than 20%". First day opened at $111.50 (+34.3%) and closed at **$97.17 (+17.1%)**, the close 12.9% below the open; **$1.28tn** on shares outstanding, $1.56tn including options/RSUs (own calculation). Against §1.3: the size is of single-deal record magnitude (🔶 media call it the largest ever), the first-day gain is far below the "+90%" tier; the AI share of issuance has not been recalculated. Zhipu 359.8, MiniMax 114.8 (lowest close since listing). (Disclosure: the source was written using an Anthropic model; negative information has not been softened.) | GSY accompanying feature "heavy issuance" |
-| 4 | **Circular-deal share keeps rising** (IMF attribution pp widening) | vendor financing ❔ | 🟡 **Supplier subscription to a customer's IPO has closed (11-20)**: ✅ Anthropic 424B4: seven suppliers subscribed for 313,253,007 Class N shares at $83, $26bn in total, not subject to the underwriters' lock-up agreement; net proceeds of the offering plus the private placement about $104.8bn, with uses including compute and infrastructure spending. AMD (subscribed $2.5bn) fell 7.7% on 11-19, triggered by a short-seller's critical report (🔶 media; the report reportedly concerns its customer-financing commitments; the report itself has not been read for this note). ✅ **Nvidia CFO commentary (11-17, 8-K Exhibit 99.2, original text read)**: maximum exposure under guarantees provided for customers **$118bn** in total (of which $105bn is the Ohio campus leased to OpenAI, with the first phase taking effect in fiscal 2029; nothing paid out to date); conditional commitments to compute clouds $32bn; equity-investment commitments $20bn; total future commitments $518bn (supply and capacity $390bn). Accounts-receivable turnover 64 days (60 days last quarter), which the company attributes in part to "extended payment terms on large, multi-quarter agreements with certain investment-grade customers"; the text says of neoclouds and frontier labs that "many are growing faster than their balance sheets and long-term credit profiles can support". Impairment of non-listed equity this quarter $1.8bn. ⇒ For the first time the scale of a supplier's credit support for its customers has a total disclosed by the company itself. No new reading on the IMF-basis attribution share. (Disclosure: the source was written using an Anthropic model; negative information has not been softened.) | self-reinforcement critical point |
-| 5 | **Leader earnings-miss chain** (NVDA / hyperscalers miss and cut for two consecutive quarters) | Cisco 2001-02 ❔ | 🟡 **Nvidia beat, shares −6.1% in two days (11-20)**: ✅ results after the 11-17 close (8-K 0001045810-26-000088 Exhibit 99.1, original text read): revenue **$115.8bn (+103%)**, data centre $107.6bn (+110%), GAAP gross margin 74.8%, net income $65.3bn (+105%); Q4 guidance $130.0bn ±3% (including an extra week, excluding China data-centre compute revenue), gross-margin guidance 71.0%–72.0% (about 3 percentage points below this quarter); Q3 operating cash flow 0.74 times net income, accounts receivable $81.0bn ($38.5bn at the start of the fiscal year). No miss, no cut ⇒ not triggered. ✅ Shares 155.46 (11-17)→150.96→**145.98 (11-19)**, −39.0% from high. ✅ 11-12 announcement (8-K 0001045810-26-000082 exhibit, original text read): Jensen Huang resigned as president, chief executive officer and director; chief financial officer Colette Kress becomes interim chief executive officer; no reason stated. | the cash-flow-support argument fails; **⚠ new judgement: the most dangerous turning point has moved from #1 (capex) to #5 (earnings) — capex can be raised without punishment (Microsoft), an earnings miss is punished at once (Meta)** |
-| 6 | **Fed back to tightening** | six hikes to 6.5% in 1999–2000 ❔ | 🟡 **Long end flat at a high level (11-20)**: 10Y 5.10% (11-12)→**5.15% (11-13)**→5.12→5.10→**5.07% (11-18)**, real 10Y 2.88, 2Y 4.80, breakeven 2.19 (✅ FRED); 🔶 5.04% on 11-19 (media). Effective federal funds rate unchanged at 3.88%, no FOMC this edition; market pricing of a hike at the December meeting was not retrieved this round. | standard feature of historical tops |
-| 7 | **Breadth deteriorates + volatility rises + accelerating advance** (GSY features) | ✅ | 🟡 **A-share breadth deteriorates to an extreme (11-20 close)**: 94% of A-shares fell on 11-20 (99th pct of five years), sectors down 97%, median stock −5.08%; CSI 300 −0.76%, CSI 1000 −4.89%; Hang Seng Tech −3.78%. The US market had not opened on 11-20, so there are no new VIX or Nasdaq 100 readings (FRED still ends at 11-18 / 11-19). Breadth has deteriorated further and the accelerating advance is still absent ⇒ stays 🟡. US side (data 11-19, unchanged in this refresh): VIX 19.3 (11-13)→22.9→25.5→**24.6 (11-18)** (✅ FRED; 11-19 not yet available); NDX 27,944→**26,517 (11-19)**, −15.1% from its 10-06 high, below the 11-05 close of 26,630; S&P 7,562→7,176, 🔶 media call it a sixth straight decline, with the Dow −6.2% this week; 87% of A-shares fell on 11-19 (95th pct), sectors down 97%. Deteriorating breadth and rising volatility are both present, the accelerating advance is not ⇒ stays 🟡. | probability tier raised |
-| 8 | **A-share / US micro signals**: A-share compute chain broadly >95th pct + spreading accrual red flags; US narrative layer PE 400+ expanding | — | 🟢 **Clearing maintained (11-20 close, rolled-forward basis)**: core-chain names at ≥80th percentile still 0 — Hygon 111.3x/3, Montage 40.8x/0, Cambricon 138.8x/3, Zhongji Innolight 17.9x/2, Eoptolink 15.8x/9, WUS 23.1x/19, TFC 42.3x/32, Envicool 83.4x/65. | the "hot layer" of a layered bubble confirmed |
-| 9 | **A-share market structural temperature** (crowding = top-5% names' share of turnover, 50% threshold / divergence / diffusion / style rotation; after Zheshang Securities' "water temperature" framework, computed daily over the whole market) | extreme turnover concentration in 1999–2000 ❔ | 🔴 **Broad sell-off day, style gap widens further (11-20 close)**: style gap +15.0→**+20.4pp** (green power +5.9 vs core −14.5); decliners **94%** (99th pct of five years), sectors down 97%; crowding 46.2%→**44.0% / 78th pct**, back below the 45% warning line (⚠ computed from Tencent turnover, to be re-checked) — a broad fall on higher volume rather than turnover concentrating; diffusion +9.8pp; basket at −59.1%, level with the 11-17 low; CSI 300 3,954.6 (−21.8% from high). | **same direction as #8: re-inflation + rotation exhaustion = the market re-embracing compute before NVDA's 8/26 results**; the beta tailwind for the defensive / value line is near its end |
+From a study of maximum drawdowns in more than 6,500 US stocks over 1985–2024 (Morgan Stanley, Mauboussin & Callahan 2025): the average stock recovers to about 340% of its prior peak, but **the median recovers to only about 90%** — the median stock never regains its high. For those that do, the median time from trough to prior high is 2.5 years.
 
-
-
-
-#### Dashboard status snapshots (rolling)
-
-| Date | Snapshot | Overview |
-|------|------|------|
-| 2026-07-02 (first edition) | #8 🔴; #2/#3/#4/#7 🟡; #1/#5 🟢; #6 to be tracked | the micro hot layer is lit; nothing confirmed at system level |
-| … | (37 intermediate editions omitted; period-by-period readings are in the source snapshot history) | |
-| 2026-11-06 (A-share/Hong Kong data 11-04; US report basis 11-04 plus 11-05 external close; triggers through 11-05 22:30 UTC) | 🔴 **US equities fell sharply on 11-05**: NDX −6.4% to 26,629.81 (−14.7% from 10-06 high, below 200-day average), semiconductors −12.2% (AMD −17.3%/MU −17.5%/TSM −10.8%/NVDA −9.3%), VIX 16.6→28.2; 🔶 media cited hedge-fund profit taking, retail sales and post-election regulatory concerns; **no company guidance cut was cited**; 🟡 **#5 Apple/Palantir/AMD/Supermicro had no misses/cuts, but cash conversion broadly worsened**; 🟡 #1 Apple control annual capex −29%; 🔴 #2 HY 344bp on 10-30 cycle high, eased to 332 (11-04); 🔴 #3 Anthropic S-1/A (11-02) range blank, Q3 operating margin +8%→−3%, commitments ~$895.4bn, perpetual 1,697→about 1,527; 🔴 #9 style gap +32.6→+18.7pp (seventh period), A-share basket −56.0% low on 11-03 then +10.4% on 11-04; 🟢 #8 still zero names ≥80th pct; §5 adds item 7 on Palantir order coverage | 🔴×3 (#2/#3/#9) + 🟡×5 (#1/#4/#5/#6/#7) + 🟢 #8, **grades unchanged**; #7 volatility component lit, #9 intensity halved; #1/#5 still unlit; the 10-31 note to watch Apple on 11-02 is incorporated (§4.4 #1/#5); next: Nvidia results date, 11-06 A-share reaction to US decline, 11-05 HY reading |
-| 2026-11-09 (data 11-06, all three markets in sync, weekly; triggers to 11-08 23:50 UTC) | 🔴 **#2 HY rose to 348bp on 11-05, a cycle high** (stocks and bonds in the same direction); 🔴 **#3 Anthropic perpetual about −20% on the week**, −11.8% on 11-06 alone to 1,336.7 (cause not verified), no new EDGAR filing; 🔴 #9 style gap +18.7→+10.9pp (eighth period), A-share basket −6.9% on 11-06, back to −55.9%, decliners 85%; US platform layer NVDA/GOOGL at the 0th percentile, ORCL 2, AMZN 5, NDX +1.4% on 11-06 to close at 26,990 (−13.6% from high); KOSPI −6.0% on 11-06 (−44.5% from high); 🟢 #8 zero names ≥80th pct | 🔴×3 (#2/#3/#9) + 🟡×5 (#1/#4/#5/#6/#7) + 🟢 #8, **grades unchanged**; #2/#3 intensity rising, #9 intensity diminishing; #1/#5 still unlit; next week: Nvidia's results calendar, Anthropic pricing/range, whether HY holds 350bp |
-| 2026-11-16 (data 11-13, all three markets in sync, weekly; triggers to 11-15 23:50 UTC) | 🔴 **#3 range set: Anthropic $70–78, $0.92–1.02tn on shares outstanding** (about $1.12–1.24tn including options/RSUs, own calculation), below the $1.5tn discussed price; concurrent $26bn private placement subscribed by seven suppliers (new example for #4); 🔶 pricing 11-18, listing 11-19; perpetual 1,344; 🟡 **#6 10Y up to 5.10%**, 2Y 4.86 (🔶 CPI above expectations, concern about a December hike); 🔴 #2 HY eased 348→320bp; 🔴 #9 style gap +10.9→+5.6pp (ninth period), crowding 45.4%, above the warning line for the first time, basket −53.3%, CSI 300 −20.6%; **Nvidia −12.7% on the week to 162.85 (−31.9% from high), AMD +18.9%**, NDX 27,944 (−10.5% from high), VIX 19.3; 🟢 #8 zero names ≥80th pct | 🔴×3 (#2/#3/#9) + 🟡×5 (#1/#4/#5/#6/#7) + 🟢 #8, **grades unchanged**; #3 moves from "yardstick falling" to "pricing week", #6 intensity rising (one hike away from 🔴), #2 intensity falling; #1/#5 still unlit; next week: Anthropic pricing and first day (11-18/19), Nvidia results, whether the 10Y holds 5%, whether the #9 style gap turns negative |
-| 2026-11-20 (data 11-19, all three markets in sync, interim full refresh; FRED to 11-18, other external readings to 11-20 03:00 UTC) | 🔴 **#3 Anthropic priced at $83 (above the range), first-day close $97.17 (+17.1%)**, falling back after opening +34%, $1.28tn on shares outstanding; $81.3bn offering + $26bn supplier private placement closed (#4); 🟡 **#5 Nvidia's quarterly results beat (revenue $115.8bn, +103%) but the shares fell 6.1% in two days to 145.98** (−39.0% from high), with an 8-K on a change of chief executive in the same period; 🔴 #2 HY 320→**347bp**, last week's easing fully given back, CRWV 44.91 (post-results gain fully given back, close to the 11-05 low of 43.66); 🟡 #7 NDX **26,517**, below the 11-05 low (−15.1% from high), VIX 24.6; 🟡 #6 10Y 5.07% (no further pressure); 🔴 #9 style gap +5.6→**+15.0pp** (tenth period), A-share basket **−59.1%** on 11-17, a cycle low, CSI 300 −21.2%; Zhipu 359.8, MiniMax 114.8 (lowest close since listing); 🟢 #8 zero names ≥80th pct | 🔴×3 (#2/#3/#9) + 🟡×5 (#1/#4/#5/#6/#7) + 🟢 #8, **grades unchanged**; #3 moves from "pricing week" to "priced, mild first day"; #2, #7 and #9 intensity rising, #6 flat; **#5 shows "a fall after a beat" for the first time**, but no miss and no cut; #1 still unlit ⇒ system level unconfirmed |
-| 2026-11-20 after the close (A-shares / Hong Kong at the 11-20 close, rolled forward from Tencent quotes; US still 11-19; interim refresh) | 🔴 **Broad A-share sell-off**: median stock −5.08%, decliners **94%** (99th pct of five years), CSI 300 only −0.76%, CSI 1000 −4.89%; 🔴 #9 style gap +15.0→**+20.4pp**, crowding 46.2%→44.0% (back below the warning line); A-share basket −59.1%, level with the 11-17 low; 🟢 #8 no names at ≥80th percentile (Zhongji Innolight 2nd percentile, Hygon 3rd, Montage 0); Hang Seng −1.89%, Hang Seng Tech −3.78%, Zhipu 334.0, MiniMax 102.4 (lowest close since listing); ANTUSDT perpetual about 91 during closed hours (−6.2% vs the stock's first-day close); 🔶 media attributions: the overnight US fall, rate-hike worries, new chip-control rules taking effect | 🔴×3 (#2/#3/#9) + 🟡×5 (#1/#4/#5/#6/#7) + 🟢 #8, **grades unchanged**; the breadth component of #7 and the style gap in #9 strengthened; no new readings on the US side (#2/#3/#5/#6); #1 still not lit ⇒ no system-level confirmation |
+Post-bust returns are concentrated in a very few high-quality survivors. Buying whatever has fallen most is bound to give a mediocre result.
 
 ---
 
-## 5. Limits of the evidence and open questions
+## 2. The current check-up
 
-1. **Rejected claims** (do not cite): NDX rose 5× in 1998–2000 and the bubble was confined to the Nasdaq (0–3); median single-stock drawdown 85% / median 2.5 years to bottom (1–2); 54% of stocks never regain their prior high (1–2).
-2. **Coverage gaps** (outline items that did not get three votes, marked ❔ in the text): the Fed's 1999–2000 hiking path, the Microsoft ruling's timing, specific single-stock peak/trough figures, fibre utilisation, the 2000–02 value factor, details of Buffett's behaviour, a quantitative review of the 2002-10 / 2003-03 double bottom, current credit spreads and neocloud debt detail.
-3. **Basis traps**: NDX 250x is trailing (forward ~60x); "AI revenue <$50B" refers to the native layer only and is dated (mid-2026 run-rate $55–80B); the IMF's circular-deal attribution arithmetic is questionable (may understate ~3×).
-4. **Timeliness**: IMF GFSR 2026-04, Goldman 2026-05, NVIDIA results 2026-05, GMO 2026-01 — AI data iterate extremely fast; **this page's valuation cross-section is as of 2026-07-02, and trigger readings need updating each weekly edition**.
-5. **Open questions**: real-time item-by-item readings of the GSY accompanying features (especially AI issuance share vs 1999's 60%); where responsibility for continuous monitoring of neocloud debt and spreads sits; clarification of the IMF attribution arithmetic.
-6. **Unmonitorable jump risk: the Taiwan Strait (added 2026-08-10)** — this dashboard **deliberately** admits only "readable" leading indicators (percentiles / thresholds / daily frequency); a Taiwan conflict is an unforecastable jump, and including it would create an illusion of "monitorability", so it stays out of §4.4; its magnitude (external estimates of a full conflict: about **−9.6%** of global GDP in the first year) is a tail risk outside this framework and must be treated explicitly outside the dashboard.
+### 2.1 Valuation and concentration
 
-7. **Order coverage thinning: Palantir (added 2026-11-03, 11-02 Q3 primary release)** — ✅ revenue $2.313bn (+96%), US commercial $984m (+148%) exceeded US government ($953m, +96%) for the first time; **total contract value (TCV) $2.918bn grew only 6%** (TCV/revenue ~1.26, own calculation), US commercial TCV $1.463bn +11%; **US commercial remaining deal value (RDV) $6.517bn, +79% YoY but only +4% QoQ**, versus Q4 revenue guidance midpoint +14.6% QoQ (own calculation) ⇒ revenue growth outpaced remaining orders. Stock compensation $319m (prior year $172m, +85%), receivables $1.883bn (2025 year-end $1.042bn, +81%). 🔶 Valuation: after-hours about $173 × diluted weighted-average shares about 2.574bn ≈ $445bn market cap; about 52× sales at full-year guidance (own calculation, weighted-average share basis). CEO emphasised “fine-tuned open-weight models”; this relates to #3's closed-model pricing but is reported without a conclusion. **Test: 2027-02 Q4 results** — if US commercial RDV QoQ remains below revenue QoQ and TCV YoY remains single-digit, mark “demand-side leading indicator weakening” and consider adding to §4.4; otherwise withdraw this item.
+| Measure | Reading | 2000 comparison |
+|---|---|---|
+| S&P CAPE | About 40–41.6 at mid-year, the second highest on record ✅; the S&P has since fallen about 8% from its 10-06 high, and this edition did not obtain a current value | Peak 44.2 |
+| Leaders' P/E | Nvidia 20.6x, Alphabet 14.7x, Microsoft 25.6x (✅ 11-23 snapshot); all at the 1st–14th percentile of their own five-year history | Nasdaq-100 about 250x |
+| Concentration | 30 AI stocks make up 44% of S&P market value (JPMorgan, 2025-09); US market concentration is at the 97.7th percentile of history ✅/⚠ | Markedly lower |
+| Household transmission | Equities are about 30% of US household assets, much of it through index funds ✅ | Lower |
+| Implied earnings | IMF: for P/E ratios to return to their ten-year median by 2027, S&P and Nasdaq earnings per share would need to grow about 30% and 35% a year ⚠ | — |
+
+Overall valuation never reached the 2000 extreme, but concentration and household exposure both exceed it. A fall transmits more widely than it did then.
+
+The leaders' low P/E ratios are the biggest difference from 2000 and the easiest point to misread: **a low percentile did not stop the fall**. Nvidia sat at the 0th–1st percentile of its own five-year range for months, and over that time the stock still lost more than a third from its high. A percentile says a stock is cheap relative to its own past; it does not say the denominator is sound.
+
+### 2.2 Capital spending, debt and circular deals
+
+This is the part most like the telecoms of 2000.
+
+**Scale.** Goldman Sachs's 2026 supply-side model puts AI-related capital spending at about $765 billion in 2026 and about $1.6 trillion in 2031 in the base case, highly sensitive to assumptions on chip life and utilisation ✅. The IMF's figure is about $3.4 trillion cumulatively by 2029 ⚠.
+
+**The borrowers now include the AAA names.** In the third quarter (✅ each company's 10-Q / 8-K):
+
+- Microsoft issued $25 billion of bonds on 10-29; quarterly capital spending was $39.4 billion, with another $364.6 billion of leases not yet commenced.
+- Alphabet issued $25.1 billion of dollar bonds in the quarter and $80.8 billion in 2026 to date; free cash flow was −$9.1 billion, negative for a second consecutive quarter.
+- Amazon added $48.1 billion of long-term debt in the quarter; free cash flow was −$33.5 billion.
+
+In 2000 the borrowers were second-tier carriers. By the third quarter of this cycle the best credits were borrowing to build as well.
+
+**The weakest link: CoreWeave** (✅ third-quarter 10-Q and press release).
+
+| Item | Reading |
+|---|---|
+| Third-quarter revenue | $3.661 billion (+168%) |
+| Net interest expense | $846 million, four times operating income |
+| Debt principal | $47.5 billion; $2.43 billion due in 2026Q4 and $10.97 billion in 2027 |
+| Liquidity | $9.84 billion (cash $4.12 billion + undrawn facilities $5.65 billion) |
+| Cash interest cover | Adjusted EBITDA of $2.256 billion, 2.7 times net interest |
+| Backlog | About $132.5 billion; 98% of revenue from take-or-pay contracts |
+| 2026 capital-spending guidance | $37–39 billion, about three times full-year revenue |
+| Share price | $42.61, about −69% from its high (11-24) |
+
+⚠ Judgment: this is a highly levered project-finance structure. Default does not look near, but principal due before the end of 2027 exceeds current liquidity, and the expansion depends entirely on continued refinancing. 🔶 Its unsecured bonds fell below 80 cents in October, yielding more than 15%.
+
+**Broad credit** (✅ FRED): the US high-yield spread was 266bp on 09-21, rose to **376bp** on 11-20, the highest of this cycle, and was 363bp on 11-23; investment grade is 97bp. In September AI borrowers alone were being charged more; now compensation is being demanded generally.
+
+**Circular deals.** The IMF estimates that between 2025-09 and 2025-12 about 7 percentage points of the equal-weighted return of seven companies in the AI circle came from self-reinforcing correlation within the circle ⚠. The newest form appeared at issuance: alongside its IPO, Anthropic privately placed $26 billion with seven compute and chip suppliers (Alphabet and Nvidia $10 billion each, AMD $2.5 billion, Broadcom, Micron and Microsoft $1 billion each, TSMC $0.5 billion) at the offer price (✅ 424B4). The same filing puts Anthropic's compute and infrastructure commitments at about $895.4 billion, and those seven are the direct or indirect payees. Suppliers took a small part of the money their customer will pay them and used it to subscribe to the customer's IPO.
+
+**The gap between revenue and investment is narrowing but remains an order of magnitude.** Anthropic's revenue for the first half of 2026 annualises to about $32.6 billion (✅ prospectus, H1×2); 🔶 OpenAI's annualised rate in September was about $50 billion. Together that is less than one eighth of 2026 AI capital spending.
+
+### 2.3 The key structural difference from 2000
+
+Nvidia, third quarter of fiscal 2027 (✅ 8-K): revenue $115.8 billion (+103%), data centre $107.6 billion (+110%), GAAP net income $65.3 billion; fourth-quarter revenue guidance $130 billion.
+
+In 2000 valuations at the top rested on loss-making companies and "eyeballs"; today the infrastructure layer rests on realised, audited revenue. That is the main reason an across-the-board −78% cannot simply be carried over.
+
+Cash quality has to be recorded alongside it: operating cash flow for the quarter was $48.3 billion, 0.74 times net income; receivables were $81.0 billion (against $38.5 billion at the start of the fiscal year) and inventory $39.7 billion (against $21.4 billion); fourth-quarter gross-margin guidance is about 3 points below the quarter just reported. 🔶 The SEC inquiry is reported to concern precisely the accounting. No primary document has been read, and an investigation is not a finding of wrongdoing.
+
+### 2.4 Three markets, three temperatures
+
+| Layer | Reading | State |
+|---|---|---|
+| **A-share compute chain** (11-25, estimate) | Hygon 107.0x / 1st percentile, Montage 40.2x / 0, Innolight 18.6x / 4th, Eoptolink 17.3x / 13th, WUS Printed Circuit 22.9x / 18th, Foxconn Industrial Internet 14.8x / 34th, TFC Optical 54.2x / 49th, Envicool 79.9x / 62nd. Of the 14 compute-chain names this study tracks, none has a P/E above its 80th percentile | High-valuation layer cleared |
+| A-share compute-chain basket | **−57.1%** from the 06-25 high; −59.1% at the low (11-17 and 11-20). Third-quarter reports accelerated over the same period: Innolight revenue +178%, Eoptolink +93%, WUS +72% | Earnings accelerating, prices falling |
+| A-share broad market | CSI 300 at 3,898.24, −23.0% from the 06-22 high; ChiNext −50.1%; STAR 50 −46.3%; Shanghai Composite −18.1% | Bear market |
+| **US platform layer** (prices 11-24, valuations 11-23) | Nvidia $155.38 / 20.6x / 1st percentile / −35.1% from high; Alphabet 14.7x / 1st; Oracle 18.3x / 1st / −55.6% from high; Microsoft 25.6x / 14th; Meta 20.3x / 23rd | Percentiles at the floor, prices not yet stable |
+| US names expensive on book value | Micron P/E 9.4x but P/B at the 83rd percentile; AMD 97.6x / P/B 81st percentile; TSMC P/B 76th percentile | Peak-cycle profits depress the P/E |
+| US neoclouds | CoreWeave $42.61, −69% from high; Nebius $87.31, −70% from high | Weakest |
+| **Anthropic** | Offer price $83 → first-day close $97.17 → 11-20 close $88.91 (intraday low $83.05) → **11-24 close $81.91**, −1.3% versus the offer and −26.5% versus the first-day open of $111.50. On 13.220 billion shares outstanding, about $1.08 trillion, or roughly 33 times sales (H1×2 basis) | Below issue |
+| **Hong Kong platforms** | Tencent HK$337.4 / 11.9x / 1st percentile, revenue growth 7.5%; Alibaba HK$81.2 | Cheap, with weak growth |
+| **Hong Kong foundation-model stocks** | Zhipu HK$271.0 (−15.0% on 11-25, −88.8% from high); MiniMax HK$87.4 (−13.8%, the lowest close since listing, −92.9% from high) | Still making new lows |
+
+### 2.5 The periphery broke first: Korea and the neoclouds
+
+The KOSPI peaked at 9,114.55 on 06-22 and closed at **4,697.51 on 11-25, −48.5%**, a new low for this cycle; it is still about 11% above its level at the end of 2025. On 10-15 it fell 7.57% in a day and tripped the circuit breaker for the tenth time this year. During the decline Samsung reported a record third-quarter operating profit (🔶 preliminary results) and its shares fell afterwards: good news stopped being rewarded.
+
+The order of the break is from the outside in. First came the most levered and most cyclical periphery (memory, neoclouds, Oracle); Nvidia, at the core of demand, did not fall noticeably until November. Since November the gap between core and periphery has been narrowing, not widening.
+
+### 2.6 China's AI chain: peaked with Korea, fell further
+
+The equal-weighted A-share compute-chain basket (Cambricon, Hygon, Innolight, Eoptolink, TFC Optical, WUS, Victory Giant, Foxconn Industrial Internet, Montage, Envicool) peaked on 06-25, three days after the KOSPI. It has fallen 57% in five months. Valuation percentiles went from mostly above 90 at mid-year to mostly below 20, with no downward revision to earnings over the same period.
+
+Hong Kong split at both ends: the foundation-model companies are about nine tenths below their highs; the platform stocks Tencent and Alibaba are down more than 40% this year, with P/E ratios at the 1st–3rd percentile of their own five-year history but revenue growth only in single digits.
+
+### 2.7 The A-share bear market
+
+The CSI 300 reached a 20% drawdown from its high on 10-22. In the seven comparable cases since 2010 (✅ recomputed for this paper), the index was lower 60 trading days later in five, and in all seven it fell below the close of the day it entered the bear market within 60 days; a year later the score was three up, three down and one flat. "Entering a bear market" is not a bottom signal.
+
+The falls are proportional to AI weight: ChiNext and STAR 50 are down about 46–50%, the Shanghai Composite 18%. The broad market was pulled into a bear market by the AI core.
 
 ---
 
-## Appendix: principal sources
+## 3. Similarities and differences with 2000
 
-- Wikipedia: *Stock market downturn of 2002* / *Nasdaq Composite* / *Dot-com bubble* / *Telecoms crash*
+| Dimension | 2000 | Now | Does the lesson transfer? |
+|---|---|---|---|
+| Peak valuation | Nasdaq-100 about 250x, CAPE 44.2 | CAPE second highest; leaders at 15–25x | Partly. The whole never reached that extreme, but low P/E ratios did not stop the fall |
+| Leaders' earnings | Loss-making companies plus expectations | Nvidia's quarterly revenue of $115.8 billion | An across-the-board −78% cannot be carried over directly |
+| Infrastructure finance | Telecoms borrowed to lay fibre | From 2026 the AAA hyperscalers are issuing debt too, with free cash flow turning negative | **Becoming transferable** |
+| Vendor financing | Equipment makers financed customers | Suppliers subscribe to a customer's IPO; compute commitments near $900 billion | Transfers; the same mechanism |
+| Issuance mania | 289 deals, +90% on day one | The largest single deal on record, but only +17% on day one and below issue four days later | The scale arrived, the heat did not; the break of issue came sooner than then |
+| Concentration and transmission | Relatively contained | 30 stocks are 44% of the S&P | Wider than then |
+| Revenue mismatch | Revenue close to zero | Native-layer revenue in the tens of billions a year against nearly $800 billion of annual investment | Half transfers; the direction is improving |
+| Monetary backdrop | Six rate rises in 1999–2000 | The Fed raised to 3.75%–4.00% on 09-16 and held on 10-28 | Transfers, at lower intensity |
+| Shape of the bust | 31 months of staged decline | The periphery has fallen for five months, the core for seven weeks | Transfers; the basis for patience |
+
+---
+
+## 4. Likelihood and timing of a bust
+
+### 4.1 The academic floor: timing cannot be forecast ✅
+
+Greenwood, Shleifer and You (JFE 2019): a sharp industry run-up does not in itself predict low subsequent returns, but it raises the probability of a crash substantially — after a 100% gain in two years, the chance of a 40%-scale drawdown within the next two years is about 53%. Accompanying features (rising volatility, heavy new issuance, an accelerating price path) help identify it.
+
+That precondition has long been met by the AI leaders, and 40%-scale drawdowns have already happened in the A-share compute chain, in Korea and in the Philadelphia Semiconductor Index.
+
+### 4.2 Institutional views (all from the first half of 2026) ✅
+
+| Camp | Representative | View |
+|---|---|---|
+| Bubble | GMO (2026-01) | "We are in a US equity and AI bubble"; no timing given |
+| Layered middle | arXiv 2606.01575 (2026-05) | A real technological revolution plus local bubbles; private foundation models, weak-moat applications and data-centre projects built on aggressive assumptions are the bubble layer |
+| Official caution | IMF GFSR (2026-04) | Valuations are stretched but less so than at historical peaks; circular deals and rising debt are singled out |
+
+All of these predate the current decline; this edition did not search for updates.
+
+### 4.3 Scenarios and subjective probabilities ⚠
+
+What follows is this paper's judgment. It is not fact, and a single episode cannot calibrate it. The July declarations are kept unrevised; the "Now" column is the current view and is not scored.
+
+| Scenario | Description | July | Now | Basis for the current view |
+|---|---|---|---|---|
+| A. Layered rolling correction | Periphery and narrative layer −40% to −70%; platform layer −20% to −35%, then caught by earnings; index drawdown of 20–30% | 45% | **about 50%** | Already happening: the periphery is inside the range and the Nasdaq-100 reached −19.8% |
+| B. Systemic bust | Capital-spending cuts, a credit event or leaders' earnings disproved; −50% or more at the Nasdaq level, over two years or longer | 25% | **about 35%** | Broken issue, record spreads and a leader under investigation all point towards B; but #1 and #5 have not fired |
+| C. Earnings digest it, no bust | Valuations go sideways and earnings grow into them | 30% | **about 15%** | Falsified for the periphery; still holds only for the platform layer |
+
+The line between A and B now depends on two things: earnings and guidance from Nvidia and the hyperscalers over the next two quarters, and whether the 2027 refinancings get done.
+
+**On "when".** The first version placed the highest-density danger window around 2027, because three lines of evidence come due then: chip-life and utilisation assumptions meet actual depreciation data, the IMF's earnings-growth test falls in 2027, and the maturity wall at CoreWeave and its peers is also in 2027. That judgment stands. The decline so far is a clearing of valuations and issuance; none of those three tests has been marked yet.
+
+### 4.4 The leading-indicator dashboard
+
+| # | Indicator | 2000 counterpart | Current reading | State |
+|---|---|---|---|---|
+| 1 | Collective cut to hyperscaler capital-spending guidance | The telecom capex turn | None has cut. Microsoft, Alphabet and Amazon all raised spending and borrowed in the third quarter; CoreWeave raised its 2026 guidance | 🟡 not triggered |
+| 2 | Wider credit spreads and failed refinancing for AI borrowers | The telecom default wave | High-yield spread 376bp (11-20, the cycle high) → 363bp; CoreWeave −69% from its high, with principal due before end-2027 above liquidity; no failed refinancing so far | 🔴 |
+| 3 | Issuance mania | The 1999 IPO wave | Anthropic's $81.3 billion IPO is done and broke issue four trading days later ($81.91 against $83); 🔶 the over-allotment option was exercised in full, which ends the stabilising short-covering bid | 🔴, moved from "cresting" to "below issue" |
+| 4 | Circular deals | Vendor financing | Seven suppliers subscribed $26 billion to a customer's IPO, not subject to the underwriters' lock-up ✅ | 🟡 |
+| 5 | Two consecutive quarters of misses and cuts at the leaders | Cisco 2001–02 | No miss. Nvidia revenue +103% with guidance up; but the chief executive resigned, 🔶 an accounting inquiry is reported, and cash conversion is 0.74 | 🟡 not triggered; quality in question |
+| 6 | The Fed tightening again | Six rises to 6.5% | Fed funds 3.75%–4.00%; ten-year 4.92% (11-23; about 5.3% at the early-October high), two-year 4.63%, real ten-year 2.79% ✅; pricing for the December meeting was not retrieved | 🟡 |
+| 7 | Deteriorating breadth, rising volatility, accelerating gains | The GSY accompanying features | VIX 35.89 on 11-20 (highest close of the year), 26.36 on 11-24; 88% of A-shares fell on 11-25 | 🟡, see note |
+| 8 | Micro signals: high percentiles and spreading accrual flags in the A-share compute chain | — | Of the 14 tracked compute-chain names, none has a P/E above its 80th percentile; four carry a financial red flag | 🟢 cleared |
+| 9 | A-share market structure: crowding and style rotation | Concentrated turnover in 1999–2000 | Defensives lead the core by 17.7 points over the past month, positive continuously since October; turnover concentration 44.5% (81st percentile of five years), below the 45% heating line | 🔴 rotation persists |
+
+**Overall**: three red (#2, #3, #9), five amber, one green. The system-level tests, #1 and #5, have not fired.
+
+Three notes:
+
+- **The definition of #1 has partly failed.** Earnings seasons since July show the market punishes not heavy spending but spending without visible return; capital spending can be raised without the stock falling, while an earnings miss is punished at once. The real turning point is #5. #1 is more likely to be a lagging confirmation of a bust than a leading signal.
+- **#7 is no longer a leading indicator.** It describes the combination seen before a top; the Nasdaq-100 peaked on 10-06 and the accelerating phase is gone. What it reads now is the decline itself, and it serves only as a stress gauge.
+- **Green on #8 does not mean safe.** It says the high valuations in the A-share compute chain have been absorbed by price; it does not say earnings will not be revised down.
+
+### 4.5 Review: where this study was right and where it needs revising
+
+**Right:**
+
+- The frame of "a real technological revolution plus local, layered bubbles", and the judgment that the heat was on the supply side. The deepest falls were indeed in the most levered and most cyclical periphery.
+- Ranking issuance as the leading detonator. Around the week Anthropic priced, the Nasdaq-100 went from −10% to −19.8%.
+- The order "credit cracks first, equity falls after". CoreWeave's loan repricing came in August, two months before its stock collapsed.
+- The A-share style-rotation signal (#9). It first appeared within a month of the basket's peak and was confirmed in October under a rule registered in advance.
+
+**To revise:**
+
+- **Treating a capital-spending cut as the most reliable top signal.** Markets have fallen 16% to 57% and it has not fired once.
+- **"A low percentile in the platform layer means earnings are holding and the layer is relatively safe."** Nvidia lost more than a third from the 0th–1st percentile. A percentile is a position relative to a stock's own history and guarantees nothing about the reliability of the denominator.
+- **The 30% given to scenario C was too high.** "Earnings are growing" was read too readily as "prices have support".
+- **The scenario exercise done in August, "a crash before October 31", is scored as not having occurred under the threshold registered in advance (a 15% closing drawdown in the Nasdaq-100).** The deepest point inside the window was −9.1%; 15% was crossed on 11-19, outside it. The direction of the chain broadly held and the timing was off by three weeks. That is one more illustration of why the calendar cannot be a basis for action.
+
+---
+
+## 5. Limits and items to follow
+
+1. **Estimated figures.** The 11-25 A-share and Hong Kong readings in this edition are scaled from closing quotes; about 17 A-shares appear to have gone ex-rights that day, and about 15% of Hong Kong names carry the previous day's value; US prices and valuations are a day apart. They will be corrected at the next refresh once final data are in.
+2. **Matters for which no primary document was read**: the SEC inquiry into Nvidia, the exercise of Anthropic's over-allotment option, Samsung's preliminary results, CoreWeave's bond prices. All are marked 🔶 in the text.
+3. **Readings not updated**: the S&P CAPE, the IMF and Goldman Sachs models and the three institutional views are still the versions from the first half of 2026.
+4. **Rejected claims** (do not cite): that the bubble was confined to the Nasdaq; a median single-stock drawdown of 85%; that 54% of stocks never regain their high.
+5. **Basis traps**: the Nasdaq-100's 250x is trailing; percentiles in this paper are relative to each stock's own five-year history; the US sample is a selected list and carries selection bias.
+6. **A jump that cannot be monitored: the Taiwan Strait.** The dashboard takes only indicators that can be read. If a conflict breaks out, most of this framework is void: Nvidia, TSMC and the whole supply chain are hit together, and "low P/E in the platform layer" offers no protection in that scenario.
+7. **Tests to follow**:
+   - Whether Nvidia responds to the reported inquiry, and its next results in 2027-02 (#5).
+   - The hyperscalers' results and capital-spending guidance in late 2027-01 (#1).
+   - The Fed meeting on December 8–9 (#6).
+   - How CoreWeave refinances the $2.43 billion due in 2026Q4 (#2).
+   - Anthropic's first quarterly report, and the direction in which Amazon and Alphabet revalue their holdings in it in their fourth-quarter reports (#3, #4).
+   - Palantir's results in 2027-02: whether US commercial remaining deal value keeps growing more slowly, quarter on quarter, than revenue.
+
+---
+
+## Appendix: main sources
+
+- Wikipedia: *Stock market downturn of 2002*, *Nasdaq Composite*, *Dot-com bubble*, *Telecoms crash*
 - Nasdaq: *Nasdaq-100 — A Tale of Three Crises over Two Decades*
-- WilmerHale (1999-12): *Internet IPOs Conclude a Sensational Year*; Jay Ritter, *IPO Statistics* (University of Florida)
+- WilmerHale (1999-12): *Internet IPOs Conclude a Sensational Year*; Jay Ritter, *IPO Statistics*
 - Morgan Stanley Counterpoint Global (Mauboussin & Callahan, 2025-05): *Drawdowns and Recoveries*
-- Greenwood, Shleifer & You: *Bubbles for Fama* (NBER w23191 / JFE 2019)
-- Wang & Chen (2026-05): arXiv 2606.01575 (layered AI-bubble diagnostic framework)
-- IMF *Global Financial Stability Report* 2026-04 Ch.1 (CAPE/HHI/circular deals/debt issuance/capex)
-- Goldman Sachs Global Institute (2026-05): *Tracking Trillions* (AI capex supply-side model)
-- GMO (Grantham/Chancellor, 2026-01): *Valuing AI: Extreme Bubble, New Golden Era, or Both*
-- NVIDIA Q1 FY2027 press release and SEC Form 8-K (2026-05-20)
-- CNBC (2025-12-10): Cisco first record close since 2000; Bloomberg (2003-04): Buffett buys Amazon junk bonds
-- Three-market valuation cross-section: independently constructed five-year historical percentile series (A shares/Hong Kong/US), refreshed weekly
+- Greenwood, Shleifer & You: *Bubbles for Fama* (JFE 2019)
+- Wang & Chen (2026-05): arXiv 2606.01575
+- IMF *Global Financial Stability Report*, 2026-04
+- Goldman Sachs Global Institute (2026-05): *Tracking Trillions*
+- GMO (2026-01): *Valuing AI: Extreme Bubble, New Golden Era, or Both*
+- SEC filings: Nvidia 8-Ks (quarterly results, executive change); Anthropic S-1/A and 424B4 (0001628280-26-074944); 2026Q3 10-Qs of CoreWeave, Microsoft, Alphabet and Amazon
+- FRED: ICE BofA high-yield and investment-grade spreads, Treasury yields, VIX
+- Computed for this paper: own five-year valuation percentiles in three markets, the equal-weighted A-share compute-chain basket, A-share market-structure measures; the academic frame is Pastor–Veronesi rational bubbles and Greenwood–Shleifer–You
 
-> **Disclaimer**: This article synthesises data and literature. Scenario probabilities are subjective judgements and **not investment advice**; actions are taken at the reader's own risk.
+> **Disclaimer**: this paper is synthesised from data and literature; the scenario probabilities are subjective judgments; it is not investment advice.
