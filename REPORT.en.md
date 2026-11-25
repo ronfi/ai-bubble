@@ -8,7 +8,7 @@
 >
 > **Evidence marks**: ✅ primary filing, or a fact confirmed by adversarial verification | ⚠ institutional estimate or this paper's judgment | 🔶 media or secondary account, original not read | ❔ accepted history, not separately verified.
 >
-> **About the public edition**: this page is cut from the research source (source `4ac3c15`, 2026-11-25). It contains no action plan, positions or stock picks; it keeps the historical comparison, the current check-up, the scenario framework and the leading-indicator dashboard. **Not investment advice.**
+> **About the public edition**: this page is cut from the research source (source `4c765d9`, 2026-11-25). It contains no action plan, positions or stock picks; it keeps the historical comparison, the current check-up, the scenario framework and the leading-indicator dashboard. **Not investment advice.**
 >
 > **Disclosure**: this paper was written by a model made by Anthropic. Anthropic is one of the main subjects of the study, and its competitors (OpenAI, Zhipu, MiniMax and others) also appear. Negative information about any of them is neither softened nor slanted.
 
@@ -21,7 +21,7 @@
 **Three things changed the picture in the past four weeks:**
 
 1. **Issuance delivered, then broke issue.** Anthropic priced at $83 on 11-18 and raised $81.3 billion, the largest IPO on record (🔶). It closed at $97.17 on day one and at **$81.91, below the offer price**, on its fourth trading day (11-24).
-2. **A leader was hit by something other than earnings.** Nvidia's chief executive resigned on 11-12 (✅ 8-K), and 🔶 media report that the SEC is investigating its accounting. The stock is 35% below its high and was 47.5% below it on 11-20.
+2. **A leader went through a governance episode unrelated to earnings, and it is not over.** Nvidia's chief executive, Jensen Huang, resigned on 11-12 (✅ 8-K). On 11-23 the board voted unanimously to reinstate him as president, chief executive and director (🔶 company press release and several media outlets; original not read); the company says its independent investigation of him continues, and 🔶 the US president said he had intervened personally. The stock was 47.5% below its high on 11-20, rose 31.5% on the day of the reinstatement (its largest one-day gain in more than two decades, 🔶), fell 5.9% the next day, and is now 35% below its high. Separately, 🔶 media report that the SEC is investigating its accounting.
 3. **Credit spreads set a new high for this cycle.** The US high-yield spread rose from 266bp in September to 376bp on 11-20.
 
 **In time, this is still early.** The 2000 bust lasted about 31 months, with several rallies of 20–40% along the way. In this cycle the periphery peaked about five months ago and the Nasdaq-100 seven weeks ago.
@@ -213,7 +213,7 @@ What follows is this paper's judgment. It is not fact, and a single episode cann
 | Scenario | Description | July | Now | Basis for the current view |
 |---|---|---|---|---|
 | A. Layered rolling correction | Periphery and narrative layer −40% to −70%; platform layer −20% to −35%, then caught by earnings; index drawdown of 20–30% | 45% | **about 50%** | Already happening: the periphery is inside the range and the Nasdaq-100 reached −19.8% |
-| B. Systemic bust | Capital-spending cuts, a credit event or leaders' earnings disproved; −50% or more at the Nasdaq level, over two years or longer | 25% | **about 35%** | Broken issue, record spreads and a leader under investigation all point towards B; but #1 and #5 have not fired |
+| B. Systemic bust | Capital-spending cuts, a credit event or leaders' earnings disproved; −50% or more at the Nasdaq level, over two years or longer | 25% | **about 35%** | Broken issue, record spreads and open questions over a leader's governance and accounting all point towards B; but #1 and #5 have not fired |
 | C. Earnings digest it, no bust | Valuations go sideways and earnings grow into them | 30% | **about 15%** | Falsified for the periphery; still holds only for the platform layer |
 
 The line between A and B now depends on two things: earnings and guidance from Nvidia and the hyperscalers over the next two quarters, and whether the 2027 refinancings get done.
@@ -228,8 +228,8 @@ The line between A and B now depends on two things: earnings and guidance from N
 | 2 | Wider credit spreads and failed refinancing for AI borrowers | The telecom default wave | High-yield spread 376bp (11-20, the cycle high) → 363bp; CoreWeave −69% from its high, with principal due before end-2027 above liquidity; no failed refinancing so far | 🔴 |
 | 3 | Issuance mania | The 1999 IPO wave | Anthropic's $81.3 billion IPO is done and broke issue four trading days later ($81.91 against $83); 🔶 the over-allotment option was exercised in full, which ends the stabilising short-covering bid | 🔴, moved from "cresting" to "below issue" |
 | 4 | Circular deals | Vendor financing | Seven suppliers subscribed $26 billion to a customer's IPO, not subject to the underwriters' lock-up ✅ | 🟡 |
-| 5 | Two consecutive quarters of misses and cuts at the leaders | Cisco 2001–02 | No miss. Nvidia revenue +103% with guidance up; but the chief executive resigned, 🔶 an accounting inquiry is reported, and cash conversion is 0.74 | 🟡 not triggered; quality in question |
-| 6 | The Fed tightening again | Six rises to 6.5% | Fed funds 3.75%–4.00%; ten-year 4.92% (11-23; about 5.3% at the early-October high), two-year 4.63%, real ten-year 2.79% ✅; pricing for the December meeting was not retrieved | 🟡 |
+| 5 | Two consecutive quarters of misses and cuts at the leaders | Cisco 2001–02 | No miss. Nvidia revenue +103% with guidance up; the chief executive resigned on 11-12 and was reinstated on 11-23, 🔶 with the company's independent investigation still open; 🔶 an accounting inquiry is reported; cash conversion is 0.74 | 🟡 not triggered; quality in question |
+| 6 | The Fed tightening again | Six rises to 6.5% | Fed funds 3.75%–4.00%; ten-year 4.92% (11-23; about 5.3% at the early-October high), two-year 4.63%, real ten-year 2.79% ✅; 🔶 on 11-24 media cited a return of rate-rise expectations and worries about new tariffs; no reading of December-meeting pricing was obtained | 🟡 |
 | 7 | Deteriorating breadth, rising volatility, accelerating gains | The GSY accompanying features | VIX 35.89 on 11-20 (highest close of the year), 26.36 on 11-24; 88% of A-shares fell on 11-25 | 🟡, see note |
 | 8 | Micro signals: high percentiles and spreading accrual flags in the A-share compute chain | — | Of the 14 tracked compute-chain names, none has a P/E above its 80th percentile; four carry a financial red flag | 🟢 cleared |
 | 9 | A-share market structure: crowding and style rotation | Concentrated turnover in 1999–2000 | Defensives lead the core by 17.7 points over the past month, positive continuously since October; turnover concentration 44.5% (81st percentile of five years), below the 45% heating line | 🔴 rotation persists |
@@ -263,13 +263,13 @@ Three notes:
 ## 5. Limits and items to follow
 
 1. **Estimated figures.** The 11-25 A-share and Hong Kong readings in this edition are scaled from closing quotes; about 17 A-shares appear to have gone ex-rights that day, and about 15% of Hong Kong names carry the previous day's value; US prices and valuations are a day apart. They will be corrected at the next refresh once final data are in.
-2. **Matters for which no primary document was read**: the SEC inquiry into Nvidia, the exercise of Anthropic's over-allotment option, Samsung's preliminary results, CoreWeave's bond prices. All are marked 🔶 in the text.
+2. **Matters for which no primary document was read**: Nvidia's 11-23 reinstatement announcement, the SEC inquiry into Nvidia, the exercise of Anthropic's over-allotment option, Samsung's preliminary results, CoreWeave's bond prices. All are marked 🔶 in the text.
 3. **Readings not updated**: the S&P CAPE, the IMF and Goldman Sachs models and the three institutional views are still the versions from the first half of 2026.
 4. **Rejected claims** (do not cite): that the bubble was confined to the Nasdaq; a median single-stock drawdown of 85%; that 54% of stocks never regain their high.
 5. **Basis traps**: the Nasdaq-100's 250x is trailing; percentiles in this paper are relative to each stock's own five-year history; the US sample is a selected list and carries selection bias.
 6. **A jump that cannot be monitored: the Taiwan Strait.** The dashboard takes only indicators that can be read. If a conflict breaks out, most of this framework is void: Nvidia, TSMC and the whole supply chain are hit together, and "low P/E in the platform layer" offers no protection in that scenario.
 7. **Tests to follow**:
-   - Whether Nvidia responds to the reported inquiry, and its next results in 2027-02 (#5).
+   - The outcome of Nvidia's independent investigation, its response to the reported accounting inquiry, and its next results in 2027-02 (#5).
    - The hyperscalers' results and capital-spending guidance in late 2027-01 (#1).
    - The Fed meeting on December 8–9 (#6).
    - How CoreWeave refinances the $2.43 billion due in 2026Q4 (#2).
